@@ -8,6 +8,7 @@ progress bar updates itself from the Kindful crowdfunding page every hour.
 | File | What it is |
 |---|---|
 | `index.html` | The whole website. Sections you'll edit are marked `(edit here)`. |
+| `images/peer-teens-usa-logo.jpg` | The logo in the top-left corner. |
 | `progress.json` | Raised / goal numbers. Written automatically, so don't edit by hand. |
 | `scripts/update_progress.py` | Reads the totals off the Kindful page. |
 | `.github/workflows/update-progress.yml` | Runs that script every hour. |
