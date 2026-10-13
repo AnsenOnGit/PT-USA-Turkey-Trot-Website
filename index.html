@@ -8,6 +8,17 @@
   <title>PEER Teens USA Turkey Trot 2026</title>
   <meta name="description" content="5K race, fun run or walk on Saturday, November 28, 2026 at Highrock Church in Arlington, MA, raising money for global food and water security.">
 
+  <!-- Link preview when the site is shared in texts, email, or social media -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ansenongit.github.io/PT-USA-Turkey-Trot-Website/">
+  <meta property="og:title" content="PEER Teens USA Turkey Trot 2026">
+  <meta property="og:description" content="Saturday, November 28 at Highrock Church, Arlington. Run, walk, or donate to support global food and water security.">
+  <meta property="og:image" content="https://lh3.googleusercontent.com/pw/AP1GczNA2zaAZ9WYFe6_lHBcEBRNDxaEujzj1FM9OOBoMqComFAwtEYm2Ph7lDcdcYCzB7Mvai_Ds6J81UqtE0Xc6_4q2Jm1YCAxzRwp4hVdvJcHMIPUyq4=w1200-h630-c">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Browser tab icon: green square with "PT" -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%232e7d32'/%3E%3Ctext x='16' y='22' font-family='Arial' font-weight='bold' font-size='15' fill='white' text-anchor='middle'%3EPT%3C/text%3E%3C/svg%3E">
+
   <style>
     body {
       margin: 0;
@@ -37,6 +48,15 @@
 
     .event-info { font-size: 19px; }
     .event-info p { margin: 4px 0; }
+    .small-link { font-size: 15px; margin-left: 6px; white-space: nowrap; }
+    .countdown { font-size: 18px; font-weight: bold; color: #c62828; margin: 0 0 12px; }
+
+    .share-button {
+      padding: 12px 22px; margin: 8px 8px 0 0; border: 2px solid #2e7d32; border-radius: 4px;
+      background: #ffffff; color: #2e7d32; font-weight: bold; font-size: 17px;
+      font-family: Arial, Helvetica, sans-serif; cursor: pointer;
+    }
+    .donate-reminder { background: #f4f4f4; border: 1px solid #dddddd; padding: 20px; text-align: center; margin-top: 24px; }
 
     /* Buttons */
     .button {
@@ -56,10 +76,25 @@
     .progress-outer { background: #dddddd; height: 20px; margin: 10px 0; }
     .progress-inner { background: #2e7d32; height: 20px; width: 0; }
 
-    /* Photos */
-    .photos { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 8px; margin-bottom: 20px; }
-    .photos img { width: 100%; height: 130px; object-fit: cover; display: block; }
-    h3 { margin: 16px 0 8px; }
+    /* Photo carousel */
+    .year { display: none; }  /* photo lists are read by the script below */
+    .year-bar { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 8px; }
+    .year-bar button {
+      padding: 8px 16px; border: 1px solid #2e7d32; background: #ffffff; color: #2e7d32;
+      font-size: 16px; font-family: Arial, Helvetica, sans-serif; border-radius: 4px; cursor: pointer;
+    }
+    .year-bar button.selected { background: #2e7d32; color: #ffffff; font-weight: bold; }
+    .slide-area { position: relative; background: #f4f4f4; }
+    .slide-area img { display: block; width: 100%; height: 420px; object-fit: contain; }
+    .arrow {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      width: 44px; height: 44px; border: none; border-radius: 4px;
+      background: rgba(0, 0, 0, 0.5); color: #ffffff; font-size: 30px; line-height: 40px; cursor: pointer;
+    }
+    .arrow.left { left: 8px; }
+    .arrow.right { right: 8px; }
+    .counter { text-align: center; color: #777777; margin: 6px 0 0; }
+    @media (max-width: 600px) { .slide-area img { height: 260px; } }
 
     footer { text-align: center; color: #777777; font-size: 14px; padding: 24px 16px 40px; }
   </style>
@@ -83,15 +118,21 @@
 
     <!-- ===================== EVENT DETAILS (edit here) ===================== -->
     <h1>PEER Teens USA Turkey Trot 2026</h1>
+    <p class="countdown" id="countdown"></p>
     <div class="event-info">
-      <p><b>When:</b> Saturday, November 28, 2026 &middot; Time coming soon</p>
-      <p><b>Where:</b> Highrock Church, 14 Mill Street, Arlington, MA 02476</p>
+      <!-- "Add to calendar" is an all-day event. Once the time is set, change
+           dates=20261128/20261129 to e.g. dates=20261128T090000/20261128T120000&ctz=America/New_York -->
+      <p><b>When:</b> Saturday, November 28, 2026 &middot; Time coming soon
+        <a class="small-link" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=PEER+Teens+USA+Turkey+Trot&dates=20261128/20261129&location=Highrock+Church,+14+Mill+Street,+Arlington,+MA+02476&details=5K+race,+fun+run,+or+walk+for+global+food+and+water+security.+https://ansenongit.github.io/PT-USA-Turkey-Trot-Website/" target="_blank">Add to calendar</a></p>
+      <p><b>Where:</b> Highrock Church, 14 Mill Street, Arlington, MA 02476
+        <a class="small-link" href="https://www.google.com/maps/search/?api=1&query=Highrock+Church+14+Mill+Street+Arlington+MA+02476" target="_blank">Get directions</a></p>
       <p><b>What:</b> 5K race, fun run, or walk to support food and water security for our global family</p>
     </div>
     <!-- Donate button: change the link to the 2026 Kindful page -->
     <a class="button" href="https://peerservants.kindful.com/2025-holiday-giving" target="_blank">Donate</a>
     <!-- Register button: change the link to the 2026 Google Form -->
     <a class="button green" href="https://docs.google.com/forms/d/e/1FAIpQLSe9g-ekLTeNmHbfr28W3h4WHO70vg3n22nt1Uw_gOi4qZGQZQ/viewform" target="_blank">Register</a>
+    <button class="share-button" id="share">Share this page</button>
     <br><br>
 
 
@@ -141,47 +182,55 @@
 
 
     <!-- ===================== PHOTOS ===================== -->
-    <!-- To add a photo, copy one <a>...</a> line and change both links to the new photo's address. -->
+    <!-- Each year is one <div class="year" data-year="...">. To add a photo, copy an <img> line
+         and change the address (keep "=w1200" at the end). To add a new year, copy a whole
+         year block, change data-year, and put it at the top. -->
     <section id="photos">
       <h2>Photos from past Turkey Trots</h2>
-      <p>Click a photo to see it full size.</p>
 
-      <h3>2025</h3>
-      <div class="photos">
-        <a href="https://lh3.googleusercontent.com/pw/AP1GczMjQA02Rcw92i9uSFRKhITeesBj5YldRLaQ1Rx2qKHRqm9kZSPMGSQKsjfVsZumdxu3cVqDuidZj4CYF9GQDc478gL8rX13kb93ObsvzfEj2KjSjZs8=w1600" target="_blank"><img src="https://lh3.googleusercontent.com/pw/AP1GczMjQA02Rcw92i9uSFRKhITeesBj5YldRLaQ1Rx2qKHRqm9kZSPMGSQKsjfVsZumdxu3cVqDuidZj4CYF9GQDc478gL8rX13kb93ObsvzfEj2KjSjZs8=w400" alt="Trotters heading out in 2025" loading="lazy"></a>
-        <a href="https://lh3.googleusercontent.com/pw/AP1GczPtKfsXaPP8jA1djvIyMGdd4N2T5mWP98fBd7r9kkuj8Px6qtKb-rdoVxHjesY6WVI8prtgp4EDwbnB9BJuj1c4WNGdYeBFx8rNCScsprh-IuC-66Mg=w1600" target="_blank"><img src="https://lh3.googleusercontent.com/pw/AP1GczPtKfsXaPP8jA1djvIyMGdd4N2T5mWP98fBd7r9kkuj8Px6qtKb-rdoVxHjesY6WVI8prtgp4EDwbnB9BJuj1c4WNGdYeBFx8rNCScsprh-IuC-66Mg=w400" alt="Group walking the 2025 route" loading="lazy"></a>
-        <a href="https://lh3.googleusercontent.com/pw/AP1GczM_7PvlkF2ZDWC_pBBctssvHr_PATteWwLATrE0_2F13oueMVqb4DTFZWR6CiWqPewIDSLt_mXIhZtDExyC7wlHK6Np2KooFk_9_Il-V6yR1opyZwSl=w1600" target="_blank"><img src="https://lh3.googleusercontent.com/pw/AP1GczM_7PvlkF2ZDWC_pBBctssvHr_PATteWwLATrE0_2F13oueMVqb4DTFZWR6CiWqPewIDSLt_mXIhZtDExyC7wlHK6Np2KooFk_9_Il-V6yR1opyZwSl=w400" alt="Participants outside in 2025" loading="lazy"></a>
-        <a href="https://lh3.googleusercontent.com/pw/AP1GczNui_Ia8c0atrSximnB8FefU39p_qdhX3Jcuqy8tOZSUdqW-2lTOixsZHVlH9Zksl6YdwAv_g7dDtnvVB9LKQw8GLZ0fE4-_o-SW6I4VRdYNXP_SQ3W=w1600" target="_blank"><img src="https://lh3.googleusercontent.com/pw/AP1GczNui_Ia8c0atrSximnB8FefU39p_qdhX3Jcuqy8tOZSUdqW-2lTOixsZHVlH9Zksl6YdwAv_g7dDtnvVB9LKQw8GLZ0fE4-_o-SW6I4VRdYNXP_SQ3W=w400" alt="Runners on the trail in 2025" loading="lazy"></a>
-        <a href="https://lh3.googleusercontent.com/pw/AP1GczMYfWsnPxGHYXXnBsBDS1LloxqvBS7RKfZ5i2SJVfikdheUp63-8HeCpCCOtvfe7XeTGBOYxEXJ1VW3PWE668KCWqDJOnLxtlTUbey2IwvH8uOIpcjP=w1600" target="_blank"><img src="https://lh3.googleusercontent.com/pw/AP1GczMYfWsnPxGHYXXnBsBDS1LloxqvBS7RKfZ5i2SJVfikdheUp63-8HeCpCCOtvfe7XeTGBOYxEXJ1VW3PWE668KCWqDJOnLxtlTUbey2IwvH8uOIpcjP=w400" alt="Opening talk in 2025" loading="lazy"></a>
-        <a href="https://lh3.googleusercontent.com/pw/AP1GczPqekbcBrfQMNrIMcINiRXkMTeHKRwt1G06Ki1dEQwzl2snRyHxwD7r1euT4uSxiYdJhcyBOSJ3QAD2MaFeiLCDrRTZrByt8c6xwulrGOpxx9mtJyCe=w1600" target="_blank"><img src="https://lh3.googleusercontent.com/pw/AP1GczPqekbcBrfQMNrIMcINiRXkMTeHKRwt1G06Ki1dEQwzl2snRyHxwD7r1euT4uSxiYdJhcyBOSJ3QAD2MaFeiLCDrRTZrByt8c6xwulrGOpxx9mtJyCe=w400" alt="Food after the 2025 trot" loading="lazy"></a>
+      <div class="carousel">
+        <div class="year-bar" id="year-bar"></div>
+        <div class="slide-area">
+          <button class="arrow left" id="prev" aria-label="Previous photo">&lsaquo;</button>
+          <a id="slide-link" href="#" target="_blank"><img id="slide" src="" alt=""></a>
+          <button class="arrow right" id="next" aria-label="Next photo">&rsaquo;</button>
+        </div>
+        <p class="counter" id="counter"></p>
       </div>
 
-      <h3>2024</h3>
-      <div class="photos">
-        <a href="https://lh3.googleusercontent.com/pw/AP1GczNA2zaAZ9WYFe6_lHBcEBRNDxaEujzj1FM9OOBoMqComFAwtEYm2Ph7lDcdcYCzB7Mvai_Ds6J81UqtE0Xc6_4q2Jm1YCAxzRwp4hVdvJcHMIPUyq4=w1600" target="_blank"><img src="https://lh3.googleusercontent.com/pw/AP1GczNA2zaAZ9WYFe6_lHBcEBRNDxaEujzj1FM9OOBoMqComFAwtEYm2Ph7lDcdcYCzB7Mvai_Ds6J81UqtE0Xc6_4q2Jm1YCAxzRwp4hVdvJcHMIPUyq4=w400" alt="Start of the 2024 trot" loading="lazy"></a>
-        <a href="https://lh3.googleusercontent.com/pw/AP1GczNNl9XCZaWt9RZFq6-ZUTTXOKXKM0UrAF1sIq2bnvPn_4QFuQUx7pQPrlxjPOOAwJAcoUhkKJihjiMBAVADC3EMAET95RrbIyUZvpOK3k4IKgqq9vA=w1600" target="_blank"><img src="https://lh3.googleusercontent.com/pw/AP1GczNNl9XCZaWt9RZFq6-ZUTTXOKXKM0UrAF1sIq2bnvPn_4QFuQUx7pQPrlxjPOOAwJAcoUhkKJihjiMBAVADC3EMAET95RrbIyUZvpOK3k4IKgqq9vA=w400" alt="Runners in 2024" loading="lazy"></a>
-        <a href="https://lh3.googleusercontent.com/pw/AP1GczNKmWKJHNzRZHcv16yWMS_8iFi__VYLL4VTxDJS5Rh_JIPSsDNinDBNrVVL1t0miIKWjF6jXPcx6nsMwQYd6trXqXEkP2v-faUNSGPq2HFIJ4VaOSg=w1600" target="_blank"><img src="https://lh3.googleusercontent.com/pw/AP1GczNKmWKJHNzRZHcv16yWMS_8iFi__VYLL4VTxDJS5Rh_JIPSsDNinDBNrVVL1t0miIKWjF6jXPcx6nsMwQYd6trXqXEkP2v-faUNSGPq2HFIJ4VaOSg=w400" alt="PEER Teens group photo, 2024" loading="lazy"></a>
-        <a href="https://lh3.googleusercontent.com/pw/AP1GczOXLqPjZsjATxo9H_srJI490wRjgixCZQyF5XfLdDGMBPSV4UQJdRovgW-2loa6oAVXYL0hQDub43n8n9pirOnF4vh674CgO5S6wN9lmK82i3_rECk=w1600" target="_blank"><img src="https://lh3.googleusercontent.com/pw/AP1GczOXLqPjZsjATxo9H_srJI490wRjgixCZQyF5XfLdDGMBPSV4UQJdRovgW-2loa6oAVXYL0hQDub43n8n9pirOnF4vh674CgO5S6wN9lmK82i3_rECk=w400" alt="Everyone together after the 2024 trot" loading="lazy"></a>
-        <a href="https://lh3.googleusercontent.com/pw/AP1GczOx2i35tNRPvzTmjgYcHJmvnvDA4zle1heHL5Zx_OBgA34udD8ROYqyfDS5jKsilN584uS3hS-yAHI9Jgbgh8nWeBgwtHnGyGHbzjaS4zgWNSGtZvw=w1600" target="_blank"><img src="https://lh3.googleusercontent.com/pw/AP1GczOx2i35tNRPvzTmjgYcHJmvnvDA4zle1heHL5Zx_OBgA34udD8ROYqyfDS5jKsilN584uS3hS-yAHI9Jgbgh8nWeBgwtHnGyGHbzjaS4zgWNSGtZvw=w400" alt="Getting ready in 2024" loading="lazy"></a>
+      <div class="year" data-year="2025">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczMjQA02Rcw92i9uSFRKhITeesBj5YldRLaQ1Rx2qKHRqm9kZSPMGSQKsjfVsZumdxu3cVqDuidZj4CYF9GQDc478gL8rX13kb93ObsvzfEj2KjSjZs8=w1200" alt="Trotters heading out in 2025">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczPtKfsXaPP8jA1djvIyMGdd4N2T5mWP98fBd7r9kkuj8Px6qtKb-rdoVxHjesY6WVI8prtgp4EDwbnB9BJuj1c4WNGdYeBFx8rNCScsprh-IuC-66Mg=w1200" alt="Group walking the 2025 route">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczM_7PvlkF2ZDWC_pBBctssvHr_PATteWwLATrE0_2F13oueMVqb4DTFZWR6CiWqPewIDSLt_mXIhZtDExyC7wlHK6Np2KooFk_9_Il-V6yR1opyZwSl=w1200" alt="Participants outside in 2025">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczNui_Ia8c0atrSximnB8FefU39p_qdhX3Jcuqy8tOZSUdqW-2lTOixsZHVlH9Zksl6YdwAv_g7dDtnvVB9LKQw8GLZ0fE4-_o-SW6I4VRdYNXP_SQ3W=w1200" alt="Runners on the trail in 2025">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczMYfWsnPxGHYXXnBsBDS1LloxqvBS7RKfZ5i2SJVfikdheUp63-8HeCpCCOtvfe7XeTGBOYxEXJ1VW3PWE668KCWqDJOnLxtlTUbey2IwvH8uOIpcjP=w1200" alt="Opening talk in 2025">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczPqekbcBrfQMNrIMcINiRXkMTeHKRwt1G06Ki1dEQwzl2snRyHxwD7r1euT4uSxiYdJhcyBOSJ3QAD2MaFeiLCDrRTZrByt8c6xwulrGOpxx9mtJyCe=w1200" alt="Food after the 2025 trot">
       </div>
 
-      <h3>2023</h3>
-      <div class="photos">
-        <a href="https://lh3.googleusercontent.com/pw/AP1GczMrXi4AtOEqnpHsOSexeHZmHCEKfqZPsCewOiccBgyk_UO2yeyweySqcQ6TFv4F7cIHNspxOad0Fy7eiTZIbO_8J4CRWrbYD-NPZ8yP5sy4Hr-JhhA=w1600" target="_blank"><img src="https://lh3.googleusercontent.com/pw/AP1GczMrXi4AtOEqnpHsOSexeHZmHCEKfqZPsCewOiccBgyk_UO2yeyweySqcQ6TFv4F7cIHNspxOad0Fy7eiTZIbO_8J4CRWrbYD-NPZ8yP5sy4Hr-JhhA=w400" alt="Trotters by the water, 2023" loading="lazy"></a>
-        <a href="https://lh3.googleusercontent.com/pw/AP1GczOuYoVPwFnKPh_KrslDWXfceO7zvgJquscOqdpKsbZezcmoVFBdeVZRnfazHhgizP5gAwCKyTsBmuxM33DoRbHXQkY6uEu7ivETc6LqY1xT624Q2lig=w1600" target="_blank"><img src="https://lh3.googleusercontent.com/pw/AP1GczOuYoVPwFnKPh_KrslDWXfceO7zvgJquscOqdpKsbZezcmoVFBdeVZRnfazHhgizP5gAwCKyTsBmuxM33DoRbHXQkY6uEu7ivETc6LqY1xT624Q2lig=w400" alt="Group on the 2023 route" loading="lazy"></a>
-        <a href="https://lh3.googleusercontent.com/pw/AP1GczN4ih0VQLTeoRVzb2Y2G788hk4T4mDLx5bEZ3mldpG-1nfL0-U2_3GHbo0IrhNFBfqUz4OdakSaxdH4wC6m0kiUNTz8uf0tPwgpHkHocxYpXrK_Ngw=w1600" target="_blank"><img src="https://lh3.googleusercontent.com/pw/AP1GczN4ih0VQLTeoRVzb2Y2G788hk4T4mDLx5bEZ3mldpG-1nfL0-U2_3GHbo0IrhNFBfqUz4OdakSaxdH4wC6m0kiUNTz8uf0tPwgpHkHocxYpXrK_Ngw=w400" alt="Walking in 2023" loading="lazy"></a>
-        <a href="https://lh3.googleusercontent.com/pw/AP1GczNtuaDqhSTIA0ihkKTfpc5SIChwvQneBA-qIMGDlEzUjNSnnBcf9yauOgfIhrlj-VTg54CiZqR6d_5QvvPtsvLWyu-VxGI5-mNGpjRa50cbuLoMb8kn=w1600" target="_blank"><img src="https://lh3.googleusercontent.com/pw/AP1GczNtuaDqhSTIA0ihkKTfpc5SIChwvQneBA-qIMGDlEzUjNSnnBcf9yauOgfIhrlj-VTg54CiZqR6d_5QvvPtsvLWyu-VxGI5-mNGpjRa50cbuLoMb8kn=w400" alt="Group photo indoors, 2023" loading="lazy"></a>
-        <a href="https://lh3.googleusercontent.com/pw/AP1GczOFaKT_M4WuhVcc6A-X0vjrCBXuirxc0EpFEBrNMlBwfVNIB7oxxal53wJDfFBOjlheBKwYUJq9GuFokG9IeQ6n8jOlQg7boQVn_m8VR8RePO1tlBtn=w1600" target="_blank"><img src="https://lh3.googleusercontent.com/pw/AP1GczOFaKT_M4WuhVcc6A-X0vjrCBXuirxc0EpFEBrNMlBwfVNIB7oxxal53wJDfFBOjlheBKwYUJq9GuFokG9IeQ6n8jOlQg7boQVn_m8VR8RePO1tlBtn=w400" alt="PEER Teens after the 2023 trot" loading="lazy"></a>
-        <a href="https://lh3.googleusercontent.com/pw/AP1GczMAMZO3DgB14XsT9b6Cp45anhl8w9PATvtMtcdtH20BDsqzgjUzTlYf55s_6kSbXyV9awyx0y-hFcy7WE0BHcvoezV0GELoUsop_TGTZuWkBbO2wL4=w1600" target="_blank"><img src="https://lh3.googleusercontent.com/pw/AP1GczMAMZO3DgB14XsT9b6Cp45anhl8w9PATvtMtcdtH20BDsqzgjUzTlYf55s_6kSbXyV9awyx0y-hFcy7WE0BHcvoezV0GELoUsop_TGTZuWkBbO2wL4=w400" alt="By the shore, 2023" loading="lazy"></a>
+      <div class="year" data-year="2024">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczNA2zaAZ9WYFe6_lHBcEBRNDxaEujzj1FM9OOBoMqComFAwtEYm2Ph7lDcdcYCzB7Mvai_Ds6J81UqtE0Xc6_4q2Jm1YCAxzRwp4hVdvJcHMIPUyq4=w1200" alt="Start of the 2024 trot">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczNNl9XCZaWt9RZFq6-ZUTTXOKXKM0UrAF1sIq2bnvPn_4QFuQUx7pQPrlxjPOOAwJAcoUhkKJihjiMBAVADC3EMAET95RrbIyUZvpOK3k4IKgqq9vA=w1200" alt="Runners in 2024">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczNKmWKJHNzRZHcv16yWMS_8iFi__VYLL4VTxDJS5Rh_JIPSsDNinDBNrVVL1t0miIKWjF6jXPcx6nsMwQYd6trXqXEkP2v-faUNSGPq2HFIJ4VaOSg=w1200" alt="PEER Teens group photo, 2024">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczOXLqPjZsjATxo9H_srJI490wRjgixCZQyF5XfLdDGMBPSV4UQJdRovgW-2loa6oAVXYL0hQDub43n8n9pirOnF4vh674CgO5S6wN9lmK82i3_rECk=w1200" alt="Everyone together after the 2024 trot">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczOx2i35tNRPvzTmjgYcHJmvnvDA4zle1heHL5Zx_OBgA34udD8ROYqyfDS5jKsilN584uS3hS-yAHI9Jgbgh8nWeBgwtHnGyGHbzjaS4zgWNSGtZvw=w1200" alt="Getting ready in 2024">
       </div>
 
-      <h3>2022</h3>
-      <div class="photos">
-        <a href="https://lh3.googleusercontent.com/d/1F2P88xiWmCFBoC1ebnhTxQQLLqELzIuw=w1600" target="_blank"><img src="https://lh3.googleusercontent.com/d/1F2P88xiWmCFBoC1ebnhTxQQLLqELzIuw=w400" alt="Runners in 2022" loading="lazy"></a>
-        <a href="https://lh3.googleusercontent.com/d/1-TORJUUkoHtlDwL4-nIexQ8N4yCJWYAN=w1600" target="_blank"><img src="https://lh3.googleusercontent.com/d/1-TORJUUkoHtlDwL4-nIexQ8N4yCJWYAN=w400" alt="A runner in 2022" loading="lazy"></a>
-        <a href="https://lh3.googleusercontent.com/d/1w5hgRiZOtUpWGapIuDSBk4DrGhmxxd5m=w1600" target="_blank"><img src="https://lh3.googleusercontent.com/d/1w5hgRiZOtUpWGapIuDSBk4DrGhmxxd5m=w400" alt="Getting together indoors, 2022" loading="lazy"></a>
-        <a href="https://lh3.googleusercontent.com/d/1HTT66AkdZKVrdromZuASSXLztr6xJtFG=w1600" target="_blank"><img src="https://lh3.googleusercontent.com/d/1HTT66AkdZKVrdromZuASSXLztr6xJtFG=w400" alt="Medals from 2022" loading="lazy"></a>
+      <div class="year" data-year="2023">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczMrXi4AtOEqnpHsOSexeHZmHCEKfqZPsCewOiccBgyk_UO2yeyweySqcQ6TFv4F7cIHNspxOad0Fy7eiTZIbO_8J4CRWrbYD-NPZ8yP5sy4Hr-JhhA=w1200" alt="Trotters by the water, 2023">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczOuYoVPwFnKPh_KrslDWXfceO7zvgJquscOqdpKsbZezcmoVFBdeVZRnfazHhgizP5gAwCKyTsBmuxM33DoRbHXQkY6uEu7ivETc6LqY1xT624Q2lig=w1200" alt="Group on the 2023 route">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczN4ih0VQLTeoRVzb2Y2G788hk4T4mDLx5bEZ3mldpG-1nfL0-U2_3GHbo0IrhNFBfqUz4OdakSaxdH4wC6m0kiUNTz8uf0tPwgpHkHocxYpXrK_Ngw=w1200" alt="Walking in 2023">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczNtuaDqhSTIA0ihkKTfpc5SIChwvQneBA-qIMGDlEzUjNSnnBcf9yauOgfIhrlj-VTg54CiZqR6d_5QvvPtsvLWyu-VxGI5-mNGpjRa50cbuLoMb8kn=w1200" alt="Group photo indoors, 2023">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczOFaKT_M4WuhVcc6A-X0vjrCBXuirxc0EpFEBrNMlBwfVNIB7oxxal53wJDfFBOjlheBKwYUJq9GuFokG9IeQ6n8jOlQg7boQVn_m8VR8RePO1tlBtn=w1200" alt="PEER Teens after the 2023 trot">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczMAMZO3DgB14XsT9b6Cp45anhl8w9PATvtMtcdtH20BDsqzgjUzTlYf55s_6kSbXyV9awyx0y-hFcy7WE0BHcvoezV0GELoUsop_TGTZuWkBbO2wL4=w1200" alt="By the shore, 2023">
       </div>
+
+      <div class="year" data-year="2022">
+        <img src="https://lh3.googleusercontent.com/d/1F2P88xiWmCFBoC1ebnhTxQQLLqELzIuw=w1200" alt="Runners in 2022">
+        <img src="https://lh3.googleusercontent.com/d/1-TORJUUkoHtlDwL4-nIexQ8N4yCJWYAN=w1200" alt="A runner in 2022">
+        <img src="https://lh3.googleusercontent.com/d/1w5hgRiZOtUpWGapIuDSBk4DrGhmxxd5m=w1200" alt="Getting together indoors, 2022">
+        <img src="https://lh3.googleusercontent.com/d/1HTT66AkdZKVrdromZuASSXLztr6xJtFG=w1200" alt="Medals from 2022">
+      </div>
+
     </section>
 
 
@@ -210,6 +259,14 @@
       </p>
     </section>
 
+    <!-- ===================== DONATE REMINDER ===================== -->
+    <!-- Change this link to the 2026 Kindful page too -->
+    <div class="donate-reminder">
+      <h2>Can't trot this year? You can still help.</h2>
+      <p>Your donation supports food and water projects with PEER Servants partners around the world.</p>
+      <a class="button" href="https://peerservants.kindful.com/2025-holiday-giving" target="_blank">Donate</a>
+    </div>
+
   </div>
 
   <footer>PEER Teens USA &middot; PEER Servants</footer>
@@ -226,6 +283,121 @@
         document.getElementById("progress-text").textContent =
           "$" + data.raised.toLocaleString() + " raised of our $" + data.goal.toLocaleString() + " goal (" + percent + "%)";
       });
+  </script>
+
+  <!-- Countdown to the event and the "Share this page" button. -->
+  <script>
+    // Countdown: change this date if the event moves
+    var EVENT_DATE = new Date(2026, 10, 28);   // months start at 0, so 10 = November
+
+    var today = new Date();
+    today.setHours(0, 0, 0, 0);
+    var daysLeft = Math.round((EVENT_DATE - today) / (1000 * 60 * 60 * 24));
+    var countdown = document.getElementById("countdown");
+    if (daysLeft > 1) countdown.textContent = daysLeft + " days until the Turkey Trot!";
+    else if (daysLeft === 1) countdown.textContent = "The Turkey Trot is tomorrow!";
+    else if (daysLeft === 0) countdown.textContent = "The Turkey Trot is today!";
+    else countdown.textContent = "Thank you to everyone who trotted and donated this year!";
+
+    // Share button: opens the phone's share menu, or copies the link on a computer
+    document.getElementById("share").onclick = function () {
+      var button = this;
+      var link = "https://ansenongit.github.io/PT-USA-Turkey-Trot-Website/";
+      if (navigator.share) {
+        navigator.share({ title: "PEER Teens USA Turkey Trot 2026", text: "Join or support the PEER Teens USA Turkey Trot!", url: link });
+      } else if (navigator.clipboard) {
+        navigator.clipboard.writeText(link).then(function () {
+          button.textContent = "Link copied!";
+          setTimeout(function () { button.textContent = "Share this page"; }, 2000);
+        }).catch(function () {
+          prompt("Copy this link:", link);
+        });
+      } else {
+        prompt("Copy this link:", link);
+      }
+    };
+  </script>
+
+  <!-- Runs the photo carousel. No need to edit. -->
+  <script>
+    var years = document.querySelectorAll(".year");
+    var yearBar = document.getElementById("year-bar");
+    var slide = document.getElementById("slide");
+    var photos = [];
+    var current = 0;
+    var currentYear = 0;
+    var SECONDS_PER_PHOTO = 5;   // how long each photo stays up
+    var timer;
+
+    function showPhoto() {
+      var photo = photos[current];
+      slide.src = photo.src;
+      slide.alt = photo.alt;
+      document.getElementById("slide-link").href = photo.src.replace("=w1200", "=w2000");
+      document.getElementById("counter").textContent = (current + 1) + " / " + photos.length;
+    }
+
+    function pickYear(index) {
+      currentYear = index;
+      photos = years[index].querySelectorAll("img");
+      current = 0;
+      var buttons = yearBar.querySelectorAll("button");
+      for (var i = 0; i < buttons.length; i++) {
+        buttons[i].className = (i === index) ? "selected" : "";
+      }
+      showPhoto();
+    }
+
+    function move(step) {
+      current = (current + step + photos.length) % photos.length;
+      showPhoto();
+    }
+
+    // Auto-advance: next photo, and on to the next year after the last one
+    function autoNext() {
+      if (current === photos.length - 1) {
+        pickYear((currentYear + 1) % years.length);
+      } else {
+        move(1);
+      }
+    }
+    function restartTimer() {
+      clearInterval(timer);
+      timer = setInterval(autoNext, SECONDS_PER_PHOTO * 1000);
+    }
+
+    // One button per year
+    for (var i = 0; i < years.length; i++) {
+      var button = document.createElement("button");
+      button.textContent = years[i].getAttribute("data-year");
+      button.onclick = (function (n) { return function () { pickYear(n); restartTimer(); }; })(i);
+      yearBar.appendChild(button);
+    }
+
+    document.getElementById("prev").onclick = function () { move(-1); restartTimer(); };
+    document.getElementById("next").onclick = function () { move(1); restartTimer(); };
+
+    // Keyboard arrows
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowLeft") { move(-1); restartTimer(); }
+      if (e.key === "ArrowRight") { move(1); restartTimer(); }
+    });
+
+    // Swipe on phones
+    var touchStartX = 0;
+    slide.addEventListener("touchstart", function (e) { touchStartX = e.touches[0].clientX; });
+    slide.addEventListener("touchend", function (e) {
+      var distance = e.changedTouches[0].clientX - touchStartX;
+      if (Math.abs(distance) > 40) { move(distance < 0 ? 1 : -1); restartTimer(); }
+    });
+
+    // Pause while the mouse is over the photo
+    var slideArea = document.querySelector(".slide-area");
+    slideArea.addEventListener("mouseenter", function () { clearInterval(timer); });
+    slideArea.addEventListener("mouseleave", restartTimer);
+
+    pickYear(0);
+    restartTimer();
   </script>
 
 </body>

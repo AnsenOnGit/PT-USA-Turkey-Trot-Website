@@ -61,18 +61,30 @@ Open `index.html` on GitHub and click the pencil icon. Look for the comments tha
   so update those too (Ctrl+F for `kindful` and `docs.google.com/forms`).
 - **Projects**: replace the "coming soon" line with a list. There's an example in the comment just above it.
 - **Sponsors**: same idea, with an example in the comment.
+- **Countdown date**: `EVENT_DATE` in the countdown script near the bottom.
+- **Add to calendar**: once the start time is set, update the `dates=` part of that link
+  (the comment above it shows how).
+- **If the web address changes** (e.g. to turkeytrot.peerservants.org), Ctrl+F for
+  `ansenongit.github.io` and replace it everywhere. It's used by link previews,
+  the calendar link and the Share button.
 
 Click **Commit changes**, and the site updates in about a minute.
 
 ### Adding photos
 
+The photos appear in a carousel with a year bar on top. It moves to the next photo every
+5 seconds; change `SECONDS_PER_PHOTO` in the carousel script to make that faster or slower.
 Photos load straight from the shared Google Photos albums and Drive folder. Nothing is copied.
-To add one:
+
+**Add a photo to an existing year:**
 
 1. Open the album, right-click a photo, and choose **Copy image address**.
-2. In `index.html`, copy an existing photo line (it starts with `<a href=` and ends with `</a>`) and paste it below.
-3. Replace both addresses in the new line with the one you copied. Keep `=w1600` at the end of
-   the first address and `=w400` at the end of the second, after deleting anything that was already
-   after the `=`.
+2. In `index.html`, find that year's block (e.g. `<div class="year" data-year="2025">`).
+3. Copy one of its `<img ...>` lines and paste it below. Replace the address with the one you copied,
+   deleting anything after the `=` at the end and putting `=w1200` there instead.
+
+**Add a new year (e.g. 2026 after this year's trot):** copy a whole year block, from
+`<div class="year" ...>` to its `</div>`, paste it **above** the 2025 block, change `data-year`
+to `2026`, and swap in the new photos. The year bar updates by itself.
 
 Photos stay visible only while their album stays shared by link.
