@@ -56,10 +56,12 @@ David (or whoever manages peerservants.org's DNS) changes that name's **CNAME** 
 Open `index.html` on GitHub and click the pencil icon. Look for the comments that say
 `(edit here)`, and type over the text the same way you'd edit a document:
 
-- **Event details** (top): the date, time and place, plus the links on the **Donate**
-  button (Kindful page) and the **Register** button (Google Form).
-  The Kindful and form links also appear in the "Register" and "How to donate" sections,
-  so update those too (Ctrl+F for `kindful` and `docs.google.com/forms`).
+- **Donation page** (very top of the file): paste the Kindful link into
+  `var DONATION_PAGE = "";`. Every Donate button switches on at once. While it's empty,
+  the buttons say "Donations open soon".
+- **Event details**: the date, time and place.
+- **Registration form**: the **Register** button and the "registration form" link
+  (Ctrl+F for `forms.gle`).
 - **Projects**: replace the "coming soon" line with a list. There's an example in the comment just above it.
 - **Sponsors**: same idea, with an example in the comment.
 - **Countdown date**: `EVENT_DATE` in the countdown script near the bottom.

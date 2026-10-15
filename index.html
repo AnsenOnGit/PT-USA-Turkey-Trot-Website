@@ -19,6 +19,15 @@
   <!-- Browser tab icon: green square with "PT" -->
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%232e7d32'/%3E%3Ctext x='16' y='22' font-family='Arial' font-weight='bold' font-size='15' fill='white' text-anchor='middle'%3EPT%3C/text%3E%3C/svg%3E">
 
+  <!-- ===================== DONATION PAGE (edit here) =====================
+       Paste the 2026 Kindful link between the quotes, e.g.
+         var DONATION_PAGE = "https://peerservants.kindful.com/2026-holiday-giving";
+       Every Donate button on the page will start working.
+       While it's empty (""), the buttons say "Donations open soon". -->
+  <script>
+    var DONATION_PAGE = "";
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Lora:wght@600&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
 
@@ -75,6 +84,8 @@
       text-decoration: none;
     }
     .button.green { background: #2e7d32; }
+    .button.soon { background: #aaaaaa; cursor: default; }
+    .donate-soon { font-weight: bold; color: #c62828; }
 
     /* Progress bar */
     .progress-box { background: #f4f4f4; border: 1px solid #dddddd; padding: 16px; }
@@ -114,8 +125,7 @@
       <nav>
         <a class="hide-on-phone" href="#register">Register</a>
         <a class="hide-on-phone" href="#photos">Photos</a>
-        <!-- Change this link to the 2026 Kindful page -->
-        <a class="button" href="https://peerservants.kindful.com/2025-holiday-giving" target="_blank">Donate</a>
+        <a class="button donate-link" href="#" target="_blank">Donate</a>
       </nav>
     </div>
   </div>
@@ -136,10 +146,10 @@
         <a class="small-link" href="https://www.google.com/maps/search/?api=1&query=Highrock+Church+14+Mill+Street+Arlington+MA+02476" target="_blank">Get directions</a></p>
       <p><b>What:</b> 5K race, fun run, or walk to support food and water security for our global family</p>
     </div>
-    <!-- Donate button: change the link to the 2026 Kindful page -->
-    <a class="button" href="https://peerservants.kindful.com/2025-holiday-giving" target="_blank">Donate</a>
-    <!-- Register button: change the link to the 2026 Google Form -->
-    <a class="button green" href="https://docs.google.com/forms/d/e/1FAIpQLSe9g-ekLTeNmHbfr28W3h4WHO70vg3n22nt1Uw_gOi4qZGQZQ/viewform" target="_blank">Register</a>
+    <!-- Donate button: its link comes from DONATION_PAGE at the top of this file -->
+    <a class="button donate-link" href="#" target="_blank">Donate</a>
+    <!-- Register button: link to the 2026 Google Form -->
+    <a class="button green" href="https://forms.gle/SPPyN53BAowZzrXMA" target="_blank">Register</a>
     <br><br>
 
 
@@ -157,7 +167,7 @@
     <!-- ===================== REGISTER ===================== -->
     <section id="register">
       <h2>Run, walk, or host your own trot</h2>
-      <p>Join PEER Teens in supporting life-giving projects of the PEER Servants partners. If you can come, please fill out the <a href="https://docs.google.com/forms/d/e/1FAIpQLSe9g-ekLTeNmHbfr28W3h4WHO70vg3n22nt1Uw_gOi4qZGQZQ/viewform" target="_blank">registration form</a> and choose a cause to support.</p>
+      <p>Join PEER Teens in supporting life-giving projects of the PEER Servants partners. If you can come, please fill out the <a href="https://forms.gle/SPPyN53BAowZzrXMA" target="_blank">registration form</a> and choose a cause to support.</p>
       <p>Can't make it in person? Get some friends together and do your own trot at a different time and place. Just fill out the same form and say you'll be doing your own trot.</p>
     </section>
 
@@ -165,9 +175,10 @@
     <!-- ===================== DONATE ===================== -->
     <section id="donate">
       <h2>How to donate</h2>
+      <p class="donate-soon">Our 2026 donation page opens soon. Check back here!</p>
       <p>To support a runner or walker:</p>
       <ol>
-        <li>Go to our <a href="https://peerservants.kindful.com/2025-holiday-giving" target="_blank">crowdfunding page</a> and look at the projects. Pick one you'd like to support.</li>
+        <li>Go to our <a class="donate-link" href="#" target="_blank">crowdfunding page</a> and look at the projects. Pick one you'd like to support.</li>
         <li>Click the project's picture or the word "details" to read more about it.</li>
         <li>Click "Donate now." Where it asks "Which event are you supporting," choose "Turkey Trot." Under "Trotter/Walker" you can type the name of the person you're supporting (optional).</li>
       </ol>
@@ -184,6 +195,7 @@
     <section id="projects">
       <h2>This year's projects</h2>
       <p>The 2026 projects are being finalized. Check back soon!</p>
+      <p>Last year, trotters supported 8 food and water projects in Sri Lanka, Guatemala, the Philippines, and South Sudan.</p>
       <p>Wondering if your donation makes a difference? See pictures from <a href="https://www.facebook.com/peerservants/posts/pfbid02jGT87ni2QnzYJR3fqgTJbtBwQ9D9NezTosy8y9GntDne2y8A1XqTSdJ1PYHAuLBwl" target="_blank">the Uganda Water Project</a>, which PEER Teens supported through a past Turkey Trot.</p>
     </section>
 
@@ -267,11 +279,11 @@
     </section>
 
     <!-- ===================== DONATE REMINDER ===================== -->
-    <!-- Change this link to the 2026 Kindful page too -->
     <div class="donate-reminder">
       <h2>Can't trot this year? You can still help.</h2>
       <p>Your donation supports food and water projects with PEER Servants partners around the world.</p>
-      <a class="button" href="https://peerservants.kindful.com/2025-holiday-giving" target="_blank">Donate</a>
+      <p class="donate-soon">Our 2026 donation page opens soon.</p>
+      <a class="button donate-link" href="#" target="_blank">Donate</a>
     </div>
 
   </div>
@@ -298,6 +310,29 @@
         document.getElementById("progress-text").textContent =
           "$" + data.raised.toLocaleString() + " raised of our $" + data.goal.toLocaleString() + " goal (" + percent + "%)";
       });
+  </script>
+
+  <!-- Turns the Donate buttons on once DONATION_PAGE is filled in. No need to edit. -->
+  <script>
+    var donateLinks = document.querySelectorAll(".donate-link");
+    var soonNotes = document.querySelectorAll(".donate-soon");
+    for (var i = 0; i < donateLinks.length; i++) {
+      var link = donateLinks[i];
+      if (DONATION_PAGE) {
+        link.href = DONATION_PAGE;
+      } else {
+        link.removeAttribute("href");
+        link.removeAttribute("target");
+        link.style.color = "inherit";
+        if (link.classList.contains("button")) {
+          link.textContent = "Donations open soon";
+          link.classList.add("soon");
+        }
+      }
+    }
+    if (DONATION_PAGE) {
+      for (var j = 0; j < soonNotes.length; j++) soonNotes[j].style.display = "none";
+    }
   </script>
 
   <!-- Countdown to the event and the "Share this page" button. -->
