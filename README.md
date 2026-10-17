@@ -61,12 +61,12 @@ Open `index.html` on GitHub and click the pencil icon. Look for the comments tha
   the buttons say "Donations open soon".
 - **Event details**: the date, time and place.
 - **Registration form**: the **Register** button and the "registration form" link
-  (Ctrl+F for `forms.gle`).
+  (Ctrl+F for `docs.google.com/forms`).
 - **Projects**: replace the "coming soon" line with a list. There's an example in the comment just above it.
 - **Sponsors**: same idea, with an example in the comment.
 - **Countdown date**: `EVENT_DATE` in the countdown script near the bottom.
-- **Add to calendar**: once the start time is set, update the `dates=` part of that link
-  (the comment above it shows how).
+- **Add to calendar**: if the date or time changes, update the `dates=` part of that link
+  (the comment above it shows how). It's currently set to 9:00am–11:00am Eastern.
 - **If the web address changes** (e.g. to turkeytrot.peerservants.org), Ctrl+F for
   `ansenongit.github.io` and replace it everywhere. It's used by link previews,
   the calendar link and the Share button.
