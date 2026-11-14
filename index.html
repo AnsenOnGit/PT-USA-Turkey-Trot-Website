@@ -6,26 +6,22 @@
   <!-- Needed so the Google Photos pictures show up. Don't remove. -->
   <meta name="referrer" content="no-referrer">
   <title>PEER Teens USA Turkey Trot 2026</title>
-  <meta name="description" content="5K race, fun run or walk on Saturday, November 28, 2026 at Highrock Church in Arlington, MA, raising money for global food and water security.">
+  <meta name="description" content="Join PEER Teens USA on Saturday, November 28, 2026 at The Mill Café in Arlington for a 5K, fun run, or walk supporting global food and water security.">
 
   <!-- Link preview when the site is shared in texts, email, or social media -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://ansenongit.github.io/PT-USA-Turkey-Trot-Website/">
+  <meta property="og:url" content="https://turkeytrot.peerteens.workers.dev/">
   <meta property="og:title" content="PEER Teens USA Turkey Trot 2026">
-  <meta property="og:description" content="Saturday, November 28 at Highrock Church, Arlington. Run, walk, or donate to support global food and water security.">
+  <meta property="og:description" content="Saturday, November 28 at The Mill Café in Arlington. Run, walk, or donate to support global food and water security.">
   <meta property="og:image" content="https://lh3.googleusercontent.com/pw/AP1GczNA2zaAZ9WYFe6_lHBcEBRNDxaEujzj1FM9OOBoMqComFAwtEYm2Ph7lDcdcYCzB7Mvai_Ds6J81UqtE0Xc6_4q2Jm1YCAxzRwp4hVdvJcHMIPUyq4=w1200-h630-c">
   <meta name="twitter:card" content="summary_large_image">
 
   <!-- Browser tab icon: green square with "PT" -->
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%232e7d32'/%3E%3Ctext x='16' y='22' font-family='Arial' font-weight='bold' font-size='15' fill='white' text-anchor='middle'%3EPT%3C/text%3E%3C/svg%3E">
 
-  <!-- ===================== DONATION PAGE (edit here) =====================
-       Paste the 2026 Kindful link between the quotes, e.g.
-         var DONATION_PAGE = "https://peerservants.kindful.com/2026-holiday-giving";
-       Every Donate button on the page will start working.
-       While it's empty (""), the buttons say "Donations open soon". -->
-  <script>
-    var DONATION_PAGE = "";
+  <!-- 2026 Bloomerang donation form. All Donate buttons use this link. -->
+
+    var DONATION_PAGE = "https://crm.bloomerang.co/HostedDonation?ApiKey=pub_6b7be5e8-ab87-11f1-92d9-02ffcc373943&WidgetId=3356672";
   </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -91,6 +87,23 @@
     .progress-box { background: #f4f4f4; border: 1px solid #dddddd; padding: 16px; }
     .progress-outer { background: #dddddd; height: 20px; margin: 10px 0; }
     .progress-inner { background: #2e7d32; height: 20px; width: 0; }
+    .overall-progress { margin-bottom: 22px; }
+    .progress-caption { color: #666666; font-size: 15px; margin: 4px 0 0; }
+    .project-progress-list { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 18px; }
+    .project-meter { background: #ffffff; border: 1px solid #dddddd; border-radius: 4px; padding: 12px; }
+    .project-meter h3 { color: #333333; font-size: 16px; line-height: 1.3; margin: 0 0 6px; }
+    .project-meter .progress-outer { height: 14px; margin: 8px 0; border-radius: 8px; overflow: hidden; }
+    .project-meter .progress-inner { height: 14px; }
+    .project-meter p { margin: 0; font-size: 15px; }
+    .project-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .project-card { border: 1px solid #dddddd; border-radius: 6px; padding: 18px; background: #ffffff; }
+    .project-card h3 { color: #2e7d32; font-family: Lora, Georgia, serif; font-size: 19px; line-height: 1.35; margin: 0 0 10px; }
+    .project-card p { margin: 8px 0; }
+    .project-goal { font-weight: bold; color: #333333; }
+    .roundup-box { background: #f4f4f4; border: 1px solid #dddddd; padding: 20px; border-radius: 6px; }
+    @media (max-width: 600px) {
+      .project-grid, .project-progress-list { grid-template-columns: 1fr; }
+    }
 
     /* Photo carousel */
     .year { display: none; }  /* photo lists are read by the script below */
@@ -124,6 +137,8 @@
       <a href="#"><img src="images/peer-teens-usa-logo.jpg" alt="PEER Teens USA"></a>
       <nav>
         <a class="hide-on-phone" href="#register">Register</a>
+        <a class="hide-on-phone" href="#projects">Projects</a>
+        <a class="hide-on-phone" href="#roundup">RoundUp</a>
         <a class="hide-on-phone" href="#photos">Photos</a>
         <a class="button donate-link" href="#" target="_blank">Donate</a>
       </nav>
@@ -141,9 +156,9 @@
       <!-- "Add to calendar" times: dates=STARTDATE T START / ENDDATE T END (24-hour clock, Eastern time).
            9:00am-11:00am on Nov 28, 2026 is dates=20261128T090000/20261128T110000 -->
       <p><b>When:</b> Saturday, November 28, 2026 &middot; 9:00am &ndash; 11:00am
-        <a class="small-link" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=PEER+Teens+USA+Turkey+Trot&dates=20261128T090000/20261128T110000&ctz=America/New_York&location=Highrock+Church,+14+Mill+Street,+Arlington,+MA+02476&details=5K+race,+fun+run,+or+walk+for+global+food+and+water+security.+https://ansenongit.github.io/PT-USA-Turkey-Trot-Website/" target="_blank">Add to calendar</a></p>
-      <p><b>Where:</b> Highrock Church, 14 Mill Street, Arlington, MA 02476
-        <a class="small-link" href="https://www.google.com/maps/search/?api=1&query=Highrock+Church+14+Mill+Street+Arlington+MA+02476" target="_blank">Get directions</a></p>
+        <a class="small-link" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=PEER+Teens+USA+Turkey+Trot&dates=20261128T090000/20261128T110000&ctz=America/New_York&location=The+Mill+Cafe,+14+Mill+Street,+Arlington,+MA+02476&details=5K+race,+fun+run,+or+walk+for+global+food+and+water+security.+https://turkeytrot.peerteens.workers.dev/" target="_blank">Add to calendar</a></p>
+      <p><b>Where:</b> High Rock Mill Cafe (The Mill Café), 14 Mill Street, Arlington, MA 02476
+        <a class="small-link" href="https://www.google.com/maps/search/?api=1&query=The+Mill+Cafe+14+Mill+Street+Arlington+MA+02476" target="_blank">Get directions</a></p>
       <p><b>What:</b> 5K race, fun run, or walk to support food and water security for our global family</p>
     </div>
     <!-- Donate button: its link comes from DONATION_PAGE at the top of this file -->
@@ -154,17 +169,21 @@
 
 
     <!-- ===================== FUNDRAISING PROGRESS ===================== -->
-    <!-- These numbers fill in by themselves from Kindful. No need to edit. -->
-    <section>
+    <section id="progress">
       <div class="progress-box">
-        <b>Fundraising progress</b>
-        <div class="progress-outer"><div class="progress-inner" id="bar"></div></div>
-        <span id="progress-text">Our 2026 goal is coming soon.</span>
+        <div class="overall-progress">
+          <b>Overall fundraising progress</b>
+          <p>Our 2026 goal is <b>$14,694</b>.</p>
+          <div class="progress-outer" role="progressbar" aria-label="Overall fundraising progress" aria-valuemin="0" aria-valuemax="14694" aria-valuenow="0"><div class="progress-inner" id="overall-bar"></div></div>
+          <span id="overall-progress-text" aria-live="polite">Daily totals will be posted here.</span>
+        </div>
+        <b>Progress by project</b>
+        <div class="project-progress-list" id="project-progress-list" aria-live="polite"></div>
+        <p class="progress-caption">Fundraising totals are updated manually each day.</p>
       </div>
     </section>
 
-
-    <!-- ===================== REGISTER ===================== -->
+        <!-- ===================== REGISTER ===================== -->
     <section id="register">
       <h2>Run, walk, or host your own trot</h2>
       <p>Join PEER Teens in supporting life-giving projects of the PEER Servants partners. If you can come, please fill out the <a href="https://docs.google.com/forms/d/e/1FAIpQLSfY4-wVAg-yVqPMcsr4vxdL5aieG5F9ZhwUXPD4k83_LzpMjA/viewform" target="_blank">registration form</a> and choose a cause to support.</p>
@@ -175,32 +194,66 @@
     <!-- ===================== DONATE ===================== -->
     <section id="donate">
       <h2>How to donate</h2>
-      <p class="donate-soon">Our 2026 donation page opens soon. Check back here!</p>
-      <p>To support a runner or walker:</p>
+      <p>Support a runner, walker, or trotter by visiting our <a class="donate-link" href="#" target="_blank" rel="noopener">2026 Turkey Trot Online Donation Page</a>.</p>
       <ol>
-        <li>Go to our <a class="donate-link" href="#" target="_blank">crowdfunding page</a> and look at the projects. Pick one you'd like to support.</li>
-        <li>Click the project's picture or the word "details" to read more about it.</li>
-        <li>Click "Donate now." Where it asks "Which event are you supporting," choose "Turkey Trot." Under "Trotter/Walker" you can type the name of the person you're supporting (optional).</li>
+        <li>Enter your donation on the Bloomerang form.</li>
+        <li>At the end of the form, use the dropdown menu under <b>“Please direct my 2026 Turkey Trot donation to...”</b> to choose the project you would like to support.</li>
       </ol>
+      <p>Your donation will be added to the fundraising totals at the end of each day. The totals on this website will be updated daily.</p>
+      <p>The donation form accepts credit cards, bank accounts, and Google Pay.</p>
+      <a class="button" href="https://crm.bloomerang.co/HostedDonation?ApiKey=pub_6b7be5e8-ab87-11f1-92d9-02ffcc373943&WidgetId=3356672" target="_blank" rel="noopener">Donate now</a>
     </section>
 
-
-    <!-- ===================== PROJECTS (edit here) ===================== -->
-    <!-- When the causes are confirmed, replace the "coming soon" line with a list like:
-         <ul>
-           <li>Sri Lanka: Water Sprinklers</li>
-           <li>Philippines: Clean Water</li>
-         </ul>
-    -->
+        <!-- ===================== PROJECTS ===================== -->
     <section id="projects">
-      <h2>This year's projects</h2>
-      <p>The 2026 projects are being finalized. Check back soon!</p>
-      <p>Last year, trotters supported 8 food and water projects in Sri Lanka, Guatemala, the Philippines, and South Sudan.</p>
-      <p>Wondering if your donation makes a difference? See pictures from <a href="https://www.facebook.com/peerservants/posts/pfbid02jGT87ni2QnzYJR3fqgTJbtBwQ9D9NezTosy8y9GntDne2y8A1XqTSdJ1PYHAuLBwl" target="_blank">the Uganda Water Project</a>, which PEER Teens supported through a past Turkey Trot.</p>
+      <h2>Choose a project to support</h2>
+      <p>This year's Turkey Trot supports eight food and water security projects with PEER Servants partners in the Philippines, Sri Lanka, South Sudan, and Guatemala. Each project has a specific fundraising goal.</p>
+      <div class="project-grid">
+        <article class="project-card">
+          <h3>Project 1 - Philippines/Solarized Clean Water Supply</h3>
+          <p>CCT needs 22 grants of $87 each to install a hybrid solar-powered pumping system that will provide reliable access to clean water for 220 students and nearby tribal families. By making the existing deep well fully operational, this project will help improve sanitation, protect children's health, and provide a sustainable water supply for the school and surrounding community.</p>
+          <p class="project-goal">Goal: $1,914 · 22 grants of $87</p>
+        </article>
+        <article class="project-card">
+          <h3>Project 2 - Philippines/Project Cacao</h3>
+          <p>CCT needs 20 grants of $121 each to provide shared cacao processing equipment for at least 20 Indigenous Blaan and Tagakaolo farmers in the Philippines. By enabling farmers to process their cacao into higher-value products, this project will help create new income opportunities, increase the value of their harvests, and strengthen sustainable livelihoods within their communities.</p>
+          <p class="project-goal">Goal: $2,420 · 20 grants of $121</p>
+        </article>
+        <article class="project-card">
+          <h3>Project 3 - Philippines/FAITH Springs - Community Water Infrastructure</h3>
+          <p>CCT needs 20 grants of $100 each to support the FAITH Springs project, which will establish a communal water pump and distribution system supporting vegetable gardens in Lupang Pangako. This project will benefit 186 community residents, including vulnerable families, rescued street children and youth, and seniors, by providing more reliable water access for year-round food production. A sustainable water supply will help families grow nutritious vegetables, improve household food security, and build on the success of their first harvest.</p>
+          <p class="project-goal">Goal: $2,000 · 20 grants of $100</p>
+        </article>
+        <article class="project-card">
+          <h3>Project 4 - Sri Lanka/Clean Milk Production</h3>
+          <p>YGro needs 56 grants of $35 each to equip 56 low-income dairy farmers with stainless steel milk cans and training in clean milk production. These essential tools will help reduce contamination, improve milk quality, and strengthen farmers' opportunities to sell their milk to reliable buyers, providing more stable income for their families.</p>
+          <p class="project-goal">Goal: $1,960 · 56 grants of $35</p>
+        </article>
+        <article class="project-card">
+          <h3>Project 5 - Sri Lanka/Improve Dairy Cow Nutrition</h3>
+          <p>YGro needs 12 grants of $75 each to equip 12 low-income dairy farmers with silage storage barrels that will help preserve nutritious animal feed for dry seasons. These tools will enable farmers to maintain healthier cows, support consistent milk production, and strengthen their families' livelihoods throughout the year.</p>
+          <p class="project-goal">Goal: $900 · 12 grants of $75</p>
+        </article>
+        <article class="project-card">
+          <h3>Project 6 - South Sudan/Water for Dignity</h3>
+          <p>SALT Yei needs 80 grants of $25 each to support 80 vulnerable schoolgirls with improved access to clean water, menstrual hygiene supplies, and health education. Through a rainwater harvesting system and dignity kits, this project will help girls manage their personal hygiene, reduce school absences, and continue their education with confidence.</p>
+          <p class="project-goal">Goal: $2,000 · 80 grants of $25</p>
+        </article>
+        <article class="project-card">
+          <h3>Project 7 - South Sudan/Goat Community Initiative</h3>
+          <p>SALT Yei needs 15 grants of $100 each to help 15 vulnerable farmers in Morobo rebuild their livelihoods through goat rearing. Each grant will contribute to providing livestock and essential veterinary support, giving families an opportunity to improve household nutrition, generate income, and regain economic stability after years of conflict.</p>
+          <p class="project-goal">Goal: $1,500 · 15 grants of $100</p>
+        </article>
+        <article class="project-card">
+          <h3>Project 8 - Guatemala/Nutritional Supplements Addressing Child Malnutrition</h3>
+          <p>Potter's House needs 20 grants of $100 each to provide three months of essential nutritional supplementation for 20 vulnerable children facing food insecurity in Guatemala. Through daily nutritional support and ongoing monitoring, this project will help children receive the nourishment they need for healthier growth, improved well-being, and a better opportunity to learn and thrive.</p>
+          <p class="project-goal">Goal: $2,000 · 20 grants of $100</p>
+        </article>
+      </div>
+      <p>To give, visit the <a class="donate-link" href="#" target="_blank" rel="noopener">Turkey Trot Online Donation Page</a> and select your project in the dropdown menu at the end of the form.</p>
     </section>
 
-
-    <!-- ===================== PHOTOS ===================== -->
+        <!-- ===================== PHOTOS ===================== -->
     <!-- Each year is one <div class="year" data-year="...">. To add a photo, copy an <img> line
          and change the address (keep "=w1200" at the end). To add a new year, copy a whole
          year block, change data-year, and put it at the top. -->
@@ -253,6 +306,16 @@
     </section>
 
 
+    <!-- ===================== ROUNDUP ===================== -->
+    <section id="roundup">
+      <div class="roundup-box">
+        <h2>Make everyday purchases add up for good with RoundUp</h2>
+        <p>Already using a Visa or Mastercard? RoundUp lets you round eligible purchases up to the next dollar and donate the difference to PEER Servants. Your roundups are combined into one charge each month, and all RoundUp funds support PEER Servants' Food/Water Security partners.</p>
+        <p>Sign-up takes less than a minute through RoundUp.org, an approved Visa and Mastercard financial partner.</p>
+        <a class="button green" href="https://www.roundup.org/nonprofits/peer-servants-ma-woburn-8w972hy" target="_blank" rel="noopener">Learn about RoundUp</a>
+      </div>
+    </section>
+
     <!-- ===================== SPONSORS (edit here) ===================== -->
     <!-- When stores say yes, replace the "coming soon" line with a list like:
          <ul>
@@ -299,20 +362,75 @@
   </footer>
 
 
-  <!-- Fills in the progress bar from progress.json (updated every hour from Kindful). No need to edit. -->
+  <!-- Reads manually updated daily fundraising totals from progress.json. -->
   <script>
-    fetch("progress.json", { cache: "no-store" })
-      .then(function (response) { return response.json(); })
-      .then(function (data) {
-        if (!data.goal) return;
-        var percent = Math.min(100, Math.round(data.raised / data.goal * 100));
-        document.getElementById("bar").style.width = percent + "%";
-        document.getElementById("progress-text").textContent =
-          "$" + data.raised.toLocaleString() + " raised of our $" + data.goal.toLocaleString() + " goal (" + percent + "%)";
-      });
+    (function () {
+      var names = {
+        p1: "Project 1 - Philippines/Solarized Clean Water Supply",
+        p2: "Project 2 - Philippines/Project Cacao",
+        p3: "Project 3 - Philippines/FAITH Springs - Community Water Infrastructure",
+        p4: "Project 4 - Sri Lanka/Clean Milk Production",
+        p5: "Project 5 - Sri Lanka/Improve Dairy Cow Nutrition",
+        p6: "Project 6 - South Sudan/Water for Dignity",
+        p7: "Project 7 - South Sudan/Goat Community Initiative",
+        p8: "Project 8 - Guatemala/Nutritional Supplements Addressing Child Malnutrition"
+      };
+      function money(value) {
+        return "$" + Number(value).toLocaleString("en-US");
+      }
+      function drawBar(bar, meter, raised, goal) {
+        var amount = (typeof raised === "number" && isFinite(raised)) ? Math.max(0, raised) : null;
+        var percent = amount === null || !goal ? 0 : Math.min(100, Math.round(amount / goal * 100));
+        bar.style.width = percent + "%";
+        meter.setAttribute("aria-valuenow", String(amount === null ? 0 : Math.min(goal, amount)));
+        return amount === null ? "Daily total not posted yet." : money(amount) + " raised of " + money(goal) + " (" + percent + "%)";
+      }
+      fetch("progress.json", { cache: "no-store" })
+        .then(function (response) {
+          if (!response.ok) throw new Error("Could not load progress.json");
+          return response.json();
+        })
+        .then(function (data) {
+          var overall = data.overall || {};
+          var overallMeter = document.querySelector("#overall-bar").parentElement;
+          document.getElementById("overall-progress-text").textContent =
+            drawBar(document.getElementById("overall-bar"), overallMeter, overall.raised, overall.goal || 14694);
+          var container = document.getElementById("project-progress-list");
+          Object.keys(names).forEach(function (key) {
+            var item = (data.projects || {})[key] || {};
+            var goal = item.goal || 0;
+            var card = document.createElement("div");
+            card.className = "project-meter";
+            var title = document.createElement("h3");
+            title.textContent = names[key];
+            card.appendChild(title);
+            var outer = document.createElement("div");
+            outer.className = "progress-outer";
+            outer.setAttribute("role", "progressbar");
+            outer.setAttribute("aria-label", names[key] + " fundraising progress");
+            outer.setAttribute("aria-valuemin", "0");
+            outer.setAttribute("aria-valuemax", String(goal));
+            outer.setAttribute("aria-valuenow", "0");
+            var inner = document.createElement("div");
+            inner.className = "progress-inner";
+            outer.appendChild(inner);
+            card.appendChild(outer);
+            var label = document.createElement("p");
+            label.textContent = drawBar(inner, outer, item.raised, goal);
+            card.appendChild(label);
+            container.appendChild(card);
+          });
+        })
+        .catch(function () {
+          document.getElementById("overall-progress-text").textContent =
+            "Fundraising totals will appear here after the daily update.";
+        });
+    })();
   </script>
 
-  <!-- Turns the Donate buttons on once DONATION_PAGE is filled in. No need to edit. -->
+
+
+      <!-- Turns the Donate buttons on once DONATION_PAGE is filled in. No need to edit. -->
   <script>
     var donateLinks = document.querySelectorAll(".donate-link");
     var soonNotes = document.querySelectorAll(".donate-soon");
@@ -347,12 +465,12 @@
     if (daysLeft > 1) countdown.textContent = daysLeft + " days until the Turkey Trot!";
     else if (daysLeft === 1) countdown.textContent = "The Turkey Trot is tomorrow!";
     else if (daysLeft === 0) countdown.textContent = "The Turkey Trot is today!";
-    else countdown.textContent = "Thank you to everyone who trotted and donated this year!";
+    else countdown.textContent = "Thank you to everyone who trotted and donated!";
 
     // Share button: opens the phone's share menu, or copies the link on a computer
     document.getElementById("share").onclick = function () {
       var button = this;
-      var link = "https://ansenongit.github.io/PT-USA-Turkey-Trot-Website/";
+      var link = "https://turkeytrot.peerteens.workers.dev/";
       if (navigator.share) {
         navigator.share({ title: "PEER Teens USA Turkey Trot 2026", text: "Join or support the PEER Teens USA Turkey Trot!", url: link });
       } else if (navigator.clipboard) {
