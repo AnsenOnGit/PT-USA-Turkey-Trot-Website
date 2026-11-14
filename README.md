@@ -10,7 +10,8 @@ The repository is connected to the live site, so commits to the deployed branch 
 
 | File | Purpose |
 |---|---|
-| `index.html` | Website layout, event details, project descriptions, donation links, RoundUp information, and photos |
+| `index.html` | Main event page, event information, progress bars, photos, sponsors, and links to the project guide |
+| `projects.html` | Dedicated page with all eight project descriptions, fundraising goals, donation instructions, project-specific donate buttons, and RoundUp information |
 | `progress.json` | Fundraising totals used by the overall and eight project progress bars |
 | `images/peer-teens-usa-logo.jpg` | PEER Teens USA logo |
 
