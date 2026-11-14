@@ -20,28 +20,29 @@ Fundraising totals are updated manually. There is no longer an hourly Kindful up
 
 At the end of each day, use the shaded/current totals in the Turkey Trot fundraising Google Sheet and update `progress.json`. Keep the same structure and replace each `null` in a `raised` field with the corresponding dollar amount as a number (without a dollar sign or commas). Set `updated` to the date/time of the update.
 
-Example:
+The structure in `progress.json` is:
+
 ```json
 {
-  "updated": "2026-11-14T20:00:00-05:00",
+  "updated": null,
   "overall": {
-    "raised": 1250,
+    "raised": null,
     "goal": 14694
   },
   "projects": {
-    "p1": { "raised": 200, "goal": 1914 },
-    "p2": { "raised": 150, "goal": 2420 },
-    "p3": { "raised": 0, "goal": 2000 },
-    "p4": { "raised": 300, "goal": 1960 },
-    "p5": { "raised": 100, "goal": 900 },
-    "p6": { "raised": 250, "goal": 2000 },
-    "p7": { "raised": 150, "goal": 1500 },
-    "p8": { "raised": 100, "goal": 2000 }
+    "p1": { "raised": null, "goal": 1914 },
+    "p2": { "raised": null, "goal": 2420 },
+    "p3": { "raised": null, "goal": 2000 },
+    "p4": { "raised": null, "goal": 1960 },
+    "p5": { "raised": null, "goal": 900 },
+    "p6": { "raised": null, "goal": 2000 },
+    "p7": { "raised": null, "goal": 1500 },
+    "p8": { "raised": null, "goal": 2000 }
   }
 }
 ```
 
-The example amounts above are illustrative only. Do not use them as actual campaign totals. Use the overall and project figures from the team's spreadsheet; do not assume the overall amount is necessarily the sum of the project amounts.
+Replace the `null` values in the `raised` fields with the actual dollar amounts from the team's spreadsheet as numbers (without dollar signs or commas). Set `updated` to the date/time of the update.
 
 Project goals:
 - p1 — Project 1 - Philippines/Solarized Clean Water Supply: $1,914
