@@ -1,93 +1,82 @@
-# PEER Teens USA Turkey Trot website
+# PEER Teens USA Turkey Trot 2026 website
 
-A one-page site for the Turkey Trot. It's free to host on GitHub Pages, and its
-progress bar updates itself from the Kindful crowdfunding page every hour.
+The website source is this repository. The live site is:
 
-## Files
+https://turkeytrot.peerteens.workers.dev/
 
-| File | What it is |
+The repository is connected to the live site, so commits to the deployed branch update the site through its configured deployment.
+
+## Main files
+
+| File | Purpose |
 |---|---|
-| `index.html` | The whole website. Sections you'll edit are marked `(edit here)`. |
-| `images/peer-teens-usa-logo.jpg` | The logo in the top-left corner. |
-| `progress.json` | Raised / goal numbers. Written automatically, so don't edit by hand. |
-| `scripts/update_progress.py` | Reads the totals off the Kindful page. |
-| `.github/workflows/update-progress.yml` | Runs that script every hour. |
-| `registration-form-2026.md` | Questions for the 2026 Google Form. |
+| `index.html` | Website layout, event details, project descriptions, donation links, RoundUp information, and photos |
+| `progress.json` | Fundraising totals used by the overall and eight project progress bars |
+| `images/peer-teens-usa-logo.jpg` | PEER Teens USA logo |
 
-## Put it online (one time, about 10 minutes, free)
+## Daily fundraising updates
 
-1. Make a free account at github.com (or use a PEER account so it isn't tied to one person).
-2. Click **New repository**, name it (e.g. `PT-USA-Turkey-Trot-Website`), set it to **Public**, and create it.
-3. Click **uploading an existing file** and drag in everything inside this folder,
-   including the hidden `.github` folder. Click **Commit changes**.
-   - If the `.github` folder won't drag in, use **Add file → Create new file**, type
-     `.github/workflows/update-progress.yml` as the name, and paste that file's contents.
-4. **Settings → Pages**: Source = *Deploy from a branch*, Branch = `main`, folder `/ (root)`, then Save.
-   About a minute later the site is live at `https://<account>.github.io/<repository-name>/` (currently https://ansenongit.github.io/PT-USA-Turkey-Trot-Website/).
-5. **Settings → Actions → General → Workflow permissions**: choose *Read and write permissions*, then Save.
+Fundraising totals are updated manually. There is no longer an hourly Kindful updater.
 
-## Turn on the automatic progress bar
+At the end of each day, use the shaded/current totals in the Turkey Trot fundraising Google Sheet and update `progress.json`. Keep the same structure and replace each `null` in a `raised` field with the corresponding dollar amount as a number (without a dollar sign or commas). Set `updated` to the date/time of the update.
 
-1. **Settings → Secrets and variables → Actions → Variables tab → New repository variable**
-   - Name: `KINDFUL_URL`
-   - Value: the 2026 Kindful page, e.g. `https://peerservants.kindful.com/2026-holiday-giving`
-2. **Actions tab → Update fundraising progress → Run workflow** to test it right away.
-   After that it runs on its own every hour.
+Example:
+```json
+{
+  "updated": "2026-11-14T20:00:00-05:00",
+  "overall": {
+    "raised": 1250,
+    "goal": 14694
+  },
+  "projects": {
+    "p1": { "raised": 200, "goal": 1914 },
+    "p2": { "raised": 150, "goal": 2420 },
+    "p3": { "raised": 0, "goal": 2000 },
+    "p4": { "raised": 300, "goal": 1960 },
+    "p5": { "raised": 100, "goal": 900 },
+    "p6": { "raised": 250, "goal": 2000 },
+    "p7": { "raised": 150, "goal": 1500 },
+    "p8": { "raised": 100, "goal": 2000 }
+  }
+}
+```
 
-Until `KINDFUL_URL` is set, the page shows "Our 2026 goal is coming soon."
+The example amounts above are illustrative only. Do not use them as actual campaign totals. Use the overall and project figures from the team's spreadsheet; do not assume the overall amount is necessarily the sum of the project amounts.
 
-> **Check with David:** in 2025 the Kindful page total combined the Turkey Trot,
-> Giving Tuesday, and Christmas Gifting. If the 2026 page is shared the same way, the bar
-> shows the combined total (that's also what last year's site showed). For a
-> Turkey-Trot-only number, Kindful would need a separate campaign page for the Trot.
+Project goals:
+- p1 — Project 1 - Philippines/Solarized Clean Water Supply: $1,914
+- p2 — Project 2 - Philippines/Project Cacao: $2,420
+- p3 — Project 3 - Philippines/FAITH Springs - Community Water Infrastructure: $2,000
+- p4 — Project 4 - Sri Lanka/Clean Milk Production: $1,960
+- p5 — Project 5 - Sri Lanka/Improve Dairy Cow Nutrition: $900
+- p6 — Project 6 - South Sudan/Water for Dignity: $2,000
+- p7 — Project 7 - South Sudan/Goat Community Initiative: $1,500
+- p8 — Project 8 - Guatemala/Nutritional Supplements Addressing Child Malnutrition: $2,000
 
-> GitHub pauses scheduled jobs in repos with no activity for 60 days. During the campaign
-> the bot's own updates keep it active. If it ever pauses, click **Enable workflow** on the Actions tab.
+The overall goal is $14,694. Until the actual current totals are entered, leave the `raised` fields as `null`; the website will say the daily total has not been posted rather than show a misleading zero.
 
-## Use turkeytrot.peerservants.org (optional)
+## Donations
 
-PEER already uses `turkeytrot.peerservants.org` (the Kindful page links to it). To point it here,
-David (or whoever manages peerservants.org's DNS) changes that name's **CNAME** record to
-`<account>.github.io`. Then in **Settings → Pages → Custom domain**, enter
-`turkeytrot.peerservants.org` and tick **Enforce HTTPS**.
+The Donate buttons lead to the 2026 Bloomerang Turkey Trot donation form. Donors choose a project using the dropdown at the end of the form under:
 
-## Yearly edits
+“Please direct my 2026 Turkey Trot donation to...”
 
-Open `index.html` on GitHub and click the pencil icon. Look for the comments that say
-`(edit here)`, and type over the text the same way you'd edit a document:
+The form supports credit cards, bank accounts, and Google Pay.
 
-- **Donation page** (very top of the file): paste the Kindful link into
-  `var DONATION_PAGE = "";`. Every Donate button switches on at once. While it's empty,
-  the buttons say "Donations open soon".
-- **Event details**: the date, time and place.
-- **Registration form**: the **Register** button and the "registration form" link
-  (Ctrl+F for `docs.google.com/forms`).
-- **Projects**: replace the "coming soon" line with a list. There's an example in the comment just above it.
-- **Sponsors**: same idea, with an example in the comment.
-- **Countdown date**: `EVENT_DATE` in the countdown script near the bottom.
-- **Add to calendar**: if the date or time changes, update the `dates=` part of that link
-  (the comment above it shows how). It's currently set to 9:00am–11:00am Eastern.
-- **If the web address changes** (e.g. to turkeytrot.peerservants.org), Ctrl+F for
-  `ansenongit.github.io` and replace it everywhere. It's used by link previews,
-  the calendar link and the Share button.
+## RoundUp
 
-Click **Commit changes**, and the site updates in about a minute.
+The RoundUp information section links to PEER Servants' RoundUp page. RoundUp rounds eligible Visa or Mastercard purchases up to the next dollar, with the accumulated roundup amount charged monthly. Todd Engelsen confirmed that RoundUp funds support PEER Servants' Food/Water Security partners.
 
-### Adding photos
+## Event details
 
-The photos appear in a carousel with a year bar on top. It moves to the next photo every
-5 seconds; change `SECONDS_PER_PHOTO` in the carousel script to make that faster or slower.
-Photos load straight from the shared Google Photos albums and Drive folder. Nothing is copied.
+- Date: Saturday, November 28, 2026
+- Time: 9:00–11:00 AM
+- Venue: High Rock Mill Cafe, Arlington, MA
 
-**Add a photo to an existing year:**
+## Photos
 
-1. Open the album, right-click a photo, and choose **Copy image address**.
-2. In `index.html`, find that year's block (e.g. `<div class="year" data-year="2025">`).
-3. Copy one of its `<img ...>` lines and paste it below. Replace the address with the one you copied,
-   deleting anything after the `=` at the end and putting `=w1200` there instead.
+The existing carousel contains photos from past Turkey Trots. New 2026 project photos are not included yet; add them after the partner photos are received and approved.
 
-**Add a new year (e.g. 2026 after this year's trot):** copy a whole year block, from
-`<div class="year" ...>` to its `</div>`, paste it **above** the 2025 block, change `data-year`
-to `2026`, and swap in the new photos. The year bar updates by itself.
+## Editing
 
-Photos stay visible only while their album stays shared by link.
+Edit `index.html` for website text, layout, and event information. Project cards and fundraising bars are already included. Keep project names consistent with the Bloomerang donation dropdown so donors can match the website descriptions to the options on the form.
