@@ -1,40 +1,40 @@
 {
-  "updated": null,
+  "updated": "2026-11-15",
   "overall": {
-    "raised": null,
+    "raised": 1200,
     "goal": 14694
   },
   "projects": {
     "p1": {
-      "raised": null,
+      "raised": 150,
       "goal": 1914
     },
     "p2": {
-      "raised": null,
+      "raised": 150,
       "goal": 2420
     },
     "p3": {
-      "raised": null,
+      "raised": 150,
       "goal": 2000
     },
     "p4": {
-      "raised": null,
+      "raised": 150,
       "goal": 1960
     },
     "p5": {
-      "raised": null,
+      "raised": 150,
       "goal": 900
     },
     "p6": {
-      "raised": null,
+      "raised": 150,
       "goal": 2000
     },
     "p7": {
-      "raised": null,
+      "raised": 150,
       "goal": 1500
     },
     "p8": {
-      "raised": null,
+      "raised": 150,
       "goal": 2000
     }
   }
