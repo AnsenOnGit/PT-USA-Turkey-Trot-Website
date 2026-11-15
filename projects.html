@@ -30,23 +30,45 @@
     h3 { font-size: 20px; color: #2e7d32; margin: 0 0 10px; }
     .intro { padding: 42px 0 28px; }
     .intro p { max-width: 760px; }
-    .goal-banner { margin-top: 20px; padding: 18px 20px; background: #f4f4f4; border: 1px solid #dddddd; border-left: 5px solid #2e7d32; border-radius: 4px; }
-    .goal-banner strong { display: block; color: #2e7d32; font-family: Lora, Georgia, serif; font-size: 27px; }
-    section { padding: 30px 0; border-top: 1px solid #dddddd; }
+    .goal-banner { margin-top: 18px; padding: 15px 18px; background: #f4f4f4; border: 1px solid #dddddd; border-radius: 5px; }
+    .goal-title { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 6px 12px; }
+    .goal-title strong { color: #2e7d32; font-family: Lora, Georgia, serif; font-size: 22px; }
+    .goal-title span { color: #666666; font-size: 14px; }
+    .goal-progress-outer { height: 11px; background: #e3e3e3; margin-top: 10px; border-radius: 10px; overflow: hidden; }
+    .goal-progress-inner { width: 0; height: 11px; background: #2e7d32; border-radius: 10px; }
+    section { padding: 28px 0; border-top: 1px solid #dddddd; }
     .instructions { background: #f4f4f4; border: 1px solid #dddddd; border-radius: 6px; padding: 22px; }
-    .instructions ol { margin-bottom: 10px; padding-left: 24px; }
-    .project-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 20px; }
-    .project-card { display: flex; flex-direction: column; border: 1px solid #dddddd; border-radius: 7px; padding: 20px; box-shadow: 0 2px 7px rgba(0,0,0,.04); }
-    .project-number { color: #777777; font-size: 14px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; margin-bottom: 5px; }
-    .project-card p { margin: 8px 0; }
-    .project-meta { border-top: 1px solid #eeeeee; margin-top: auto; padding-top: 12px; }
-    .project-goal { font-weight: 700; margin-bottom: 10px !important; }
-    .grant-detail { color: #555555; font-size: 16px; }
+    .project-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 16px; }
+    .project-card { border: 1px solid #dddddd; border-radius: 7px; background: #ffffff; overflow: hidden; }
+    .project-card summary { list-style: none; cursor: pointer; padding: 16px 18px; }
+    .project-card summary::-webkit-details-marker { display: none; }
+    .project-card summary::marker { content: ""; }
+    .project-card summary:focus-visible { outline: 3px solid #2e7d32; outline-offset: -3px; }
+    .card-topline { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 8px; }
+    .country { color: #777777; font-size: 13px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; }
+    .project-no { color: #2e7d32; font-size: 13px; font-weight: 700; text-transform: uppercase; }
+    .project-card h3 { font-size: 19px; margin: 0 0 6px; }
+    .expand-hint { color: #777777; font-size: 14px; }
+    .expand-hint::after { content: " +"; color: #2e7d32; font-weight: 700; }
+    .project-card[open] .expand-hint::after { content: " -"; }
+    .project-body { padding: 0 18px 16px; border-top: 1px solid #eeeeee; }
+    .project-body p { margin: 12px 0; }
+    .project-meta { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 14px; padding-top: 10px; border-top: 1px solid #eeeeee; font-size: 15px; }
+    .project-meta strong { color: #2e7d32; }
+    .project-meta span { color: #666666; }
     .button { display: inline-block; padding: 11px 18px; margin-top: 9px; border-radius: 4px; background: #c62828; color: #ffffff; font-weight: 700; text-decoration: none; text-align: center; }
     .button.green { background: #2e7d32; }
     .button.secondary { background: #ffffff; border: 1px solid #2e7d32; color: #2e7d32; }
     .roundup-box { background: #f4f4f4; border: 1px solid #dddddd; border-radius: 6px; padding: 22px; }
+    .roundup-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+    .roundup-actions .button { margin: 0; }
     .fine-print { color: #666666; font-size: 15px; }
+    @media (max-width: 680px) {
+      .project-grid { grid-template-columns: 1fr; }
+      .header .page { align-items: flex-start; }
+      nav { gap: 9px 13px; justify-content: flex-end; font-size: 16px; }
+      h1 { font-size: 32px; }
+    }
     footer { margin-top: 25px; padding: 22px 0 32px; background: #f4f4f4; border-top: 1px solid #dddddd; color: #666666; font-size: 16px; }
     footer .page { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; align-items: center; }
     footer a { color: #333333; margin-right: 15px; }
@@ -74,138 +96,141 @@
   <main class="page">
     <div class="intro">
       <h1>2026 Turkey Trot Projects</h1>
-      <p>Every gift helps PEER Teens USA support practical, partner-led projects that strengthen access to clean water, nutrition, food security, and sustainable livelihoods. Explore the eight projects below and choose the cause you would like your Turkey Trot donation to support.</p>
+      <p>Eight great projects. Pick one you care about and help make it happen!</p>
       <div class="goal-banner">
-        <span>Our combined fundraising goal</span>
-        <strong>$14,694</strong>
-        <span>Eight projects · Four countries · One shared commitment to food and water security</span>
+        <div class="goal-title">
+          <strong>Goal: $14,694</strong>
+          <span id="goal-progress-text" aria-live="polite">We update the total each day.</span>
+        </div>
+        <div class="goal-progress-outer" role="progressbar" aria-label="Overall Turkey Trot fundraising progress" aria-valuemin="0" aria-valuemax="14694" aria-valuenow="0">
+          <div class="goal-progress-inner" id="goal-progress-bar"></div>
+        </div>
       </div>
-      <p><a class="button secondary" href="index.html">Back to Turkey Trot event page</a></p>
     </div>
+
+        <section id="projects">
+      <h2>Choose a project</h2>
+      <div class="project-grid">
+        <details class="project-card" id="project-1">
+          <summary>
+            <div class="card-topline"><span class="country">Philippines</span><span class="project-no">Project 1</span></div>
+            <h3>Solarized Clean Water Supply</h3>
+            <span class="expand-hint">Read about this project</span>
+          </summary>
+          <div class="project-body">
+            <p>CCT needs 22 grants of $87 each to install a hybrid solar-powered pumping system that will provide reliable access to clean water for 220 students and nearby tribal families. By making the existing deep well fully operational, this project will help improve sanitation, protect children's health, and provide a sustainable water supply for the school and the surrounding community.</p>
+            <div class="project-meta"><strong>Goal: $1,914</strong><span>22 grants of $87</span></div>
+          </div>
+        </details>
+
+        <details class="project-card" id="project-2">
+          <summary>
+            <div class="card-topline"><span class="country">Philippines</span><span class="project-no">Project 2</span></div>
+            <h3>Project Cacao</h3>
+            <span class="expand-hint">Read about this project</span>
+          </summary>
+          <div class="project-body">
+            <p>CCT needs 20 grants of $121 each to provide shared cacao processing equipment for at least 20 indigenous Blaan and Tagakaolo farmers in the Philippines. By enabling farmers to process their cacao into higher-value products, this project will help create new income opportunities, increase the value of their harvests, and strengthen sustainable livelihoods within their communities.</p>
+            <div class="project-meta"><strong>Goal: $2,420</strong><span>20 grants of $121</span></div>
+          </div>
+        </details>
+
+        <details class="project-card" id="project-3">
+          <summary>
+            <div class="card-topline"><span class="country">Philippines</span><span class="project-no">Project 3</span></div>
+            <h3>FAITH Springs - Community Water Infrastructure</h3>
+            <span class="expand-hint">Read about this project</span>
+          </summary>
+          <div class="project-body">
+            <p>CCT needs 20 grants of $100 each to support the FAITH Springs project that will establish a communal water pump and distribution system supporting vegetable gardens in Lupang Pangako. This project will benefit 186 community residents, including vulnerable families, rescued street children and youth, and seniors, by providing more reliable water access for year-round food production. With a sustainable water supply, families can continue growing nutritious vegetables, improve household food security, and build on the success of their first harvest.</p>
+            <div class="project-meta"><strong>Goal: $2,000</strong><span>20 grants of $100</span></div>
+          </div>
+        </details>
+
+        <details class="project-card" id="project-4">
+          <summary>
+            <div class="card-topline"><span class="country">Sri Lanka</span><span class="project-no">Project 4</span></div>
+            <h3>Clean Milk Production</h3>
+            <span class="expand-hint">Read about this project</span>
+          </summary>
+          <div class="project-body">
+            <p>YGro needs 56 grants of $35 each to equip 56 low-income dairy farmers with stainless steel milk cans and training in clean milk production. These essential tools will help reduce contamination, improve milk quality, and strengthen farmers' opportunities to sell their milk to reliable buyers, providing more stable income for their families.</p>
+            <div class="project-meta"><strong>Goal: $1,960</strong><span>56 grants of $35</span></div>
+          </div>
+        </details>
+
+        <details class="project-card" id="project-5">
+          <summary>
+            <div class="card-topline"><span class="country">Sri Lanka</span><span class="project-no">Project 5</span></div>
+            <h3>Improve Dairy Cow Nutrition</h3>
+            <span class="expand-hint">Read about this project</span>
+          </summary>
+          <div class="project-body">
+            <p>YGro needs 12 grants of $75 each to equip 12 low-income dairy farmers with silage storage barrels that will help preserve nutritious animal feed for dry seasons. These simple but essential tools will enable farmers to maintain healthier cows, support consistent milk production, and strengthen their families' livelihoods throughout the year.</p>
+            <div class="project-meta"><strong>Goal: $900</strong><span>12 grants of $75</span></div>
+          </div>
+        </details>
+
+        <details class="project-card" id="project-6">
+          <summary>
+            <div class="card-topline"><span class="country">South Sudan</span><span class="project-no">Project 6</span></div>
+            <h3>Water for Dignity</h3>
+            <span class="expand-hint">Read about this project</span>
+          </summary>
+          <div class="project-body">
+            <p>SALT Yei needs 80 grants of $25 each to support 80 vulnerable schoolgirls with improved access to clean water, menstrual hygiene supplies, and health education. Through a rainwater harvesting system and dignity kits, this project will help girls manage their personal hygiene, reduce school absences, and continue their education with confidence.</p>
+            <div class="project-meta"><strong>Goal: $2,000</strong><span>80 grants of $25</span></div>
+          </div>
+        </details>
+
+        <details class="project-card" id="project-7">
+          <summary>
+            <div class="card-topline"><span class="country">South Sudan</span><span class="project-no">Project 7</span></div>
+            <h3>Goat Community Initiative</h3>
+            <span class="expand-hint">Read about this project</span>
+          </summary>
+          <div class="project-body">
+            <p>SALT Yei needs 15 grants of $100 each to help 15 vulnerable farmers in Morobo rebuild their livelihoods through goat rearing. Each grant will contribute to providing livestock and essential veterinary support, giving families an opportunity to improve household nutrition, generate income, and regain economic stability after years of conflict.</p>
+            <div class="project-meta"><strong>Goal: $1,500</strong><span>15 grants of $100</span></div>
+          </div>
+        </details>
+
+        <details class="project-card" id="project-8">
+          <summary>
+            <div class="card-topline"><span class="country">Guatemala</span><span class="project-no">Project 8</span></div>
+            <h3>Nutritional Supplements Addressing Child Malnutrition</h3>
+            <span class="expand-hint">Read about this project</span>
+          </summary>
+          <div class="project-body">
+            <p>Potter's House needs 20 grants of $100 each to provide three months of essential nutritional supplementation for 20 vulnerable children facing food insecurity in Guatemala. Through daily nutritional support and ongoing monitoring, this project will help children receive the nourishment they need for healthier growth, improved well-being, and a better opportunity to learn and thrive.</p>
+            <div class="project-meta"><strong>Goal: $2,000</strong><span>20 grants of $100</span></div>
+          </div>
+        </details>
+      </div>
+    </section>
 
     <section id="how-to-donate">
       <div class="instructions">
         <h2>How to direct your donation</h2>
-        <ol>
-          <li>Open the <a href="https://crm.bloomerang.co/HostedDonation?ApiKey=pub_6b7be5e8-ab87-11f1-92d9-02ffcc373943&WidgetId=3356672" target="_blank" rel="noopener">2026 Turkey Trot Online Donation Page</a> and enter your gift.</li>
-          <li>At the end of the form, find the dropdown under <strong>“Please direct my 2026 Turkey Trot donation to...”</strong></li>
-          <li>Select the project you want to support. The project names below match the choices in the donation form.</li>
-        </ol>
-        <p>Your donation will be added to the fundraising total at the end of each day. The project and overall totals on the event website are updated daily.</p>
-        <p class="fine-print">The Bloomerang form accepts credit cards, bank accounts, and Google Pay. A project-specific button below opens the same donation form; it does not preselect the project, so please choose the matching project in the dropdown.</p>
-        <a class="button" href="https://crm.bloomerang.co/HostedDonation?ApiKey=pub_6b7be5e8-ab87-11f1-92d9-02ffcc373943&WidgetId=3356672" target="_blank" rel="noopener">Open the donation form</a>
+        <p>At the end of the donation form, choose your project from the dropdown under <strong>“Please direct my 2026 Turkey Trot donation to...”</strong></p>
+        <p>Your gift will be added to the fundraising total at the end of the day. We update the totals here each day.</p>
+        <p class="fine-print">The form accepts credit cards, bank accounts, and Google Pay.</p>
+        <a class="button" href="https://crm.bloomerang.co/HostedDonation?ApiKey=pub_6b7be5e8-ab87-11f1-92d9-02ffcc373943&WidgetId=3356672" target="_blank" rel="noopener">Donate now!</a>
       </div>
     </section>
 
-    <section id="projects">
-      <h2>Explore the eight projects</h2>
-      <p>Each project card explains what the partner is raising money for, what the grants help provide, and the project's fundraising goal.</p>
-
-      <div class="project-grid">
-        <article class="project-card" id="project-1">
-          <div class="project-number">PHILIPPINES · PROJECT 1</div>
-          <h3>Project 1 - Philippines/Solarized Clean Water Supply</h3>
-          <p>CCT needs 22 grants of $87 each to install a hybrid solar-powered pumping system that will provide reliable access to clean water for 220 students and nearby tribal families. By making the existing deep well fully operational, this project will help improve sanitation, protect children's health, and provide a sustainable water supply for the school and the surrounding community.</p>
-          <div class="project-meta">
-            <p class="project-goal">Project goal: $1,914</p>
-            <p class="grant-detail">22 grants · $87 each</p>
-            <a class="button" href="https://crm.bloomerang.co/HostedDonation?ApiKey=pub_6b7be5e8-ab87-11f1-92d9-02ffcc373943&WidgetId=3356672" target="_blank" rel="noopener">Donate to Project 1</a>
-          </div>
-        </article>
-
-        <article class="project-card" id="project-2">
-          <div class="project-number">PHILIPPINES · PROJECT 2</div>
-          <h3>Project 2 - Philippines/Project Cacao</h3>
-          <p>CCT needs 20 grants of $121 each to provide shared cacao processing equipment for at least 20 indigenous Blaan and Tagakaolo farmers in the Philippines. By enabling farmers to process their cacao into higher-value products, this project will help create new income opportunities, increase the value of their harvests, and strengthen sustainable livelihoods within their communities.</p>
-          <div class="project-meta">
-            <p class="project-goal">Project goal: $2,420</p>
-            <p class="grant-detail">20 grants · $121 each</p>
-            <a class="button" href="https://crm.bloomerang.co/HostedDonation?ApiKey=pub_6b7be5e8-ab87-11f1-92d9-02ffcc373943&WidgetId=3356672" target="_blank" rel="noopener">Donate to Project 2</a>
-          </div>
-        </article>
-
-        <article class="project-card" id="project-3">
-          <div class="project-number">PHILIPPINES · PROJECT 3</div>
-          <h3>Project 3 - Philippines/FAITH Springs - Community Water Infrastructure</h3>
-          <p>CCT needs 20 grants of $100 each to support the FAITH Springs project that will establish a communal water pump and distribution system supporting vegetable gardens in Lupang Pangako. This project will benefit 186 community residents, including vulnerable families, rescued street children and youth, and seniors, by providing more reliable water access for year-round food production. With a sustainable water supply, families can continue growing nutritious vegetables, improve household food security, and build on the success of their first harvest.</p>
-          <div class="project-meta">
-            <p class="project-goal">Project goal: $2,000</p>
-            <p class="grant-detail">20 grants · $100 each</p>
-            <a class="button" href="https://crm.bloomerang.co/HostedDonation?ApiKey=pub_6b7be5e8-ab87-11f1-92d9-02ffcc373943&WidgetId=3356672" target="_blank" rel="noopener">Donate to Project 3</a>
-          </div>
-        </article>
-
-        <article class="project-card" id="project-4">
-          <div class="project-number">SRI LANKA · PROJECT 4</div>
-          <h3>Project 4 - Sri Lanka/Clean Milk Production</h3>
-          <p>YGro needs 56 grants of $35 each to equip 56 low-income dairy farmers with stainless steel milk cans and training in clean milk production. These essential tools will help reduce contamination, improve milk quality, and strengthen farmers' opportunities to sell their milk to reliable buyers, providing more stable income for their families.</p>
-          <div class="project-meta">
-            <p class="project-goal">Project goal: $1,960</p>
-            <p class="grant-detail">56 grants · $35 each</p>
-            <a class="button" href="https://crm.bloomerang.co/HostedDonation?ApiKey=pub_6b7be5e8-ab87-11f1-92d9-02ffcc373943&WidgetId=3356672" target="_blank" rel="noopener">Donate to Project 4</a>
-          </div>
-        </article>
-
-        <article class="project-card" id="project-5">
-          <div class="project-number">SRI LANKA · PROJECT 5</div>
-          <h3>Project 5 - Sri Lanka/Improve Dairy Cow Nutrition</h3>
-          <p>YGro needs 12 grants of $75 each to equip 12 low-income dairy farmers with silage storage barrels that will help preserve nutritious animal feed for dry seasons. These simple but essential tools will enable farmers to maintain healthier cows, support consistent milk production, and strengthen their families' livelihoods throughout the year.</p>
-          <div class="project-meta">
-            <p class="project-goal">Project goal: $900</p>
-            <p class="grant-detail">12 grants · $75 each</p>
-            <a class="button" href="https://crm.bloomerang.co/HostedDonation?ApiKey=pub_6b7be5e8-ab87-11f1-92d9-02ffcc373943&WidgetId=3356672" target="_blank" rel="noopener">Donate to Project 5</a>
-          </div>
-        </article>
-
-        <article class="project-card" id="project-6">
-          <div class="project-number">SOUTH SUDAN · PROJECT 6</div>
-          <h3>Project 6 - South Sudan/Water for Dignity</h3>
-          <p>SALT Yei needs 80 grants of $25 each to support 80 vulnerable schoolgirls with improved access to clean water, menstrual hygiene supplies, and health education. Through a rainwater harvesting system and dignity kits, this project will help girls manage their personal hygiene, reduce school absences, and continue their education with confidence.</p>
-          <div class="project-meta">
-            <p class="project-goal">Project goal: $2,000</p>
-            <p class="grant-detail">80 grants · $25 each</p>
-            <a class="button" href="https://crm.bloomerang.co/HostedDonation?ApiKey=pub_6b7be5e8-ab87-11f1-92d9-02ffcc373943&WidgetId=3356672" target="_blank" rel="noopener">Donate to Project 6</a>
-          </div>
-        </article>
-
-        <article class="project-card" id="project-7">
-          <div class="project-number">SOUTH SUDAN · PROJECT 7</div>
-          <h3>Project 7 - South Sudan/Goat Community Initiative</h3>
-          <p>SALT Yei needs 15 grants of $100 each to help 15 vulnerable farmers in Morobo rebuild their livelihoods through goat rearing. Each grant will contribute to providing livestock and essential veterinary support, giving families an opportunity to improve household nutrition, generate income, and regain economic stability after years of conflict.</p>
-          <div class="project-meta">
-            <p class="project-goal">Project goal: $1,500</p>
-            <p class="grant-detail">15 grants · $100 each</p>
-            <a class="button" href="https://crm.bloomerang.co/HostedDonation?ApiKey=pub_6b7be5e8-ab87-11f1-92d9-02ffcc373943&WidgetId=3356672" target="_blank" rel="noopener">Donate to Project 7</a>
-          </div>
-        </article>
-
-        <article class="project-card" id="project-8">
-          <div class="project-number">GUATEMALA · PROJECT 8</div>
-          <h3>Project 8 - Guatemala/Nutritional Supplements Addressing Child Malnutrition</h3>
-          <p>Potter's House needs 20 grants of $100 each to provide three months of essential nutritional supplementation for 20 vulnerable children facing food insecurity in Guatemala. Through daily nutritional support and ongoing monitoring, this project will help children receive the nourishment they need for healthier growth, improved well-being, and a better opportunity to learn and thrive.</p>
-          <div class="project-meta">
-            <p class="project-goal">Project goal: $2,000</p>
-            <p class="grant-detail">20 grants · $100 each</p>
-            <a class="button" href="https://crm.bloomerang.co/HostedDonation?ApiKey=pub_6b7be5e8-ab87-11f1-92d9-02ffcc373943&WidgetId=3356672" target="_blank" rel="noopener">Donate to Project 8</a>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section id="roundup">
+        <section id="roundup">
       <div class="roundup-box">
-        <h2>Another way to give: RoundUp</h2>
-        <p>RoundUp lets you round eligible Visa or Mastercard purchases up to the next dollar and donate the difference to PEER Servants. The roundup amounts are combined into one charge each month. All RoundUp funds support PEER Servants' Food/Water Security partners.</p>
-        <p>Sign-up takes less than a minute through RoundUp.org, an approved Visa and Mastercard financial partner.</p>
-        <a class="button green" href="https://www.roundup.org/nonprofits/peer-servants-ma-woburn-8w972hy" target="_blank" rel="noopener">Visit PEER Servants on RoundUp</a>
+        <h2>Round up your purchases for PEER Servants</h2>
+        <p>RoundUp adds the spare change from your Visa or Mastercard purchases to a monthly donation. All RoundUp donations support PEER Servants' Food/Water Security partners.</p>
+        <div class="roundup-actions">
+          <a class="button secondary" href="https://www.roundup.org/pages/faqs" target="_blank" rel="noopener">Learn more</a>
+          <a class="button green" href="https://www.roundup.org/nonprofits/peer-servants-ma-woburn-8w972hy" target="_blank" rel="noopener">Sign up</a>
+        </div>
       </div>
     </section>
 
-    <section>
-      <h2>Thank you for supporting the Turkey Trot</h2>
-      <p>Whether you run, walk, share the campaign, or give to a project, thank you for helping PEER Teens USA support communities working toward stronger food and water security.</p>
-      <a class="button green" href="index.html">Return to Turkey Trot home page</a>
-    </section>
+
   </main>
 
   <footer>
@@ -215,8 +240,30 @@
         <a href="https://sites.google.com/view/pt-usa/home" target="_blank" rel="noopener">PEER Teens USA</a>
         <a href="https://peerservants.org/" target="_blank" rel="noopener">PEER Servants</a>
       </div>
-      <span>PEER Teens USA · Turkey Trot 2026</span>
+      <span>PEER Teens USA , Turkey Trot 2026</span>
     </div>
   </footer>
+  <script>
+    fetch("progress.json", { cache: "no-store" })
+      .then(function (response) {
+        if (!response.ok) throw new Error("Could not load fundraising progress");
+        return response.json();
+      })
+      .then(function (data) {
+        var totals = data.overall || {};
+        var goal = totals.goal || 14694;
+        var raised = typeof totals.raised === "number" ? Math.max(0, totals.raised) : null;
+        var percent = raised === null ? 0 : Math.min(100, raised / goal * 100);
+        document.getElementById("goal-progress-bar").style.width = percent + "%";
+        document.querySelector(".goal-progress-outer").setAttribute("aria-valuenow", String(raised === null ? 0 : Math.min(goal, raised)));
+        document.getElementById("goal-progress-text").textContent =
+          raised === null ? "We update the total each day." :
+          "$" + raised.toLocaleString("en-US") + " raised of $" + goal.toLocaleString("en-US");
+      })
+      .catch(function () {
+        document.getElementById("goal-progress-text").textContent = "We update the total each day.";
+      });
+  </script>
+
 </body>
 </html>
