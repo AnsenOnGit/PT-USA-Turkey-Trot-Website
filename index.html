@@ -367,10 +367,7 @@
             outer.appendChild(inner);
             row.appendChild(outer);
 
-            var label = document.createElement("p");
-            label.textContent = fillBar(inner, item.raised, goal);
             outer.setAttribute("aria-valuenow", String(typeof item.raised === "number" ? Math.min(goal, item.raised) : 0));
-            row.appendChild(label);
             container.appendChild(row);
           });
         })
