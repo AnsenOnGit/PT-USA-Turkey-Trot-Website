@@ -44,8 +44,11 @@
     .header { border-bottom: 1px solid #dddddd; padding: 10px 0; }
     .header .page { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
     .header img { height: 48px; display: block; }
-    .header nav a { color: #333333; text-decoration: none; font-weight: 600; margin-left: 18px; }
-    .header nav a.button { color: #ffffff; margin: 0 0 0 18px; padding: 8px 16px; }
+    .header nav { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 18px; }
+    .header nav a { color: #333333; text-decoration: none; font-weight: 600; margin: 0; }
+    .header nav a.nav-cta { color: #ffffff; padding: 8px 16px; border-radius: 4px; margin: 0; }
+    .header nav a.nav-signup { background: #2e7d32; }
+    .header nav a.nav-donate { background: #d84315; }
     @media (max-width: 600px) { .header nav a.hide-on-phone { display: none; } }
 
     /* Banner photo */
@@ -151,12 +154,11 @@
   <div class="header">
     <div class="page">
       <a href="#"><img src="images/peer-teens-usa-logo.jpg" alt="PEER Teens USA"></a>
-      <nav>
-        <a class="hide-on-phone" href="#event-description">Event</a>
-        <a class="hide-on-phone" href="projects.html">Projects</a>
-        <a class="hide-on-phone" href="#roundup">RoundUp</a>
-        <a class="hide-on-phone" href="#photos">Photos</a>
-        <a class="button donate-link" href="#" target="_blank">Donate</a>
+      <nav aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a class="button nav-cta nav-signup" href="https://docs.google.com/forms/d/e/1FAIpQLSfY4-wVAg-yVqPMcsr4vxdL5aieG5F9ZhwUXPD4k83_LzpMjA/viewform" target="_blank" rel="noopener">Sign Up</a>
+        <a class="button nav-cta nav-donate donate-link" href="projects.html">Donate</a>
       </nav>
     </div>
   </div>
