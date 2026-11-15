@@ -66,47 +66,23 @@ Open the published CSV URL in a private/incognito browser window. It should show
 
 If the CSV URL is blank, the site continues to use `progress.json` as a fallback. If you want to undo the public feed later, unpublish the tab in Google Sheets and clear the URL in `progress-data.js`.
 
-## Daily fundraising updates
+## Fallback progress.json file
 
-Fundraising totals are updated manually. There is no longer an hourly Kindful updater.
+The website uses the published Google Sheets CSV configured in `progress-data.js` when `PROGRESS_CSV_URL` is filled in. If that URL is blank, both pages fall back to `progress.json`.
 
-At the end of each day, use the shaded/current totals in the Turkey Trot fundraising Google Sheet and update `progress.json`. Keep the same structure and replace each `null` in a `raised` field with the corresponding dollar amount as a number (without a dollar sign or commas). Set `updated` to the date/time of the update.
+If you are not using the Google Sheets feed, update the `raised` amounts in `progress.json` manually at the end of each day. Keep each amount as a number without a dollar sign or commas, and set `updated` to the date/time of the update. Leave a `raised` field as `null` until the actual amount is known so the website displays “not posted yet” rather than a misleading zero.
 
-The structure in `progress.json` is:
+The goals in `progress.json` are:
 
-```json
-{
-  "updated": null,
-  "overall": {
-    "raised": null,
-    "goal": 14694
-  },
-  "projects": {
-    "p1": { "raised": null, "goal": 1914 },
-    "p2": { "raised": null, "goal": 2420 },
-    "p3": { "raised": null, "goal": 2000 },
-    "p4": { "raised": null, "goal": 1960 },
-    "p5": { "raised": null, "goal": 900 },
-    "p6": { "raised": null, "goal": 2000 },
-    "p7": { "raised": null, "goal": 1500 },
-    "p8": { "raised": null, "goal": 2000 }
-  }
-}
-```
-
-Replace the `null` values in the `raised` fields with the actual dollar amounts from the team's spreadsheet as numbers (without dollar signs or commas). Set `updated` to the date/time of the update.
-
-Project goals:
-- p1 — Project 1 - Philippines/Solarized Clean Water Supply: $1,914
-- p2 — Project 2 - Philippines/Project Cacao: $2,420
-- p3 — Project 3 - Philippines/FAITH Springs - Community Water Infrastructure: $2,000
-- p4 — Project 4 - Sri Lanka/Clean Milk Production: $1,960
-- p5 — Project 5 - Sri Lanka/Improve Dairy Cow Nutrition: $900
-- p6 — Project 6 - South Sudan/Water for Dignity: $2,000
-- p7 — Project 7 - South Sudan/Goat Community Initiative: $1,500
-- p8 — Project 8 - Guatemala/Nutritional Supplements Addressing Child Malnutrition: $2,000
-
-The overall goal is $14,694. Until the actual current totals are entered, leave the `raised` fields as `null`; the website will say the daily total has not been posted rather than show a misleading zero.
+- Overall: $14,694
+- p1 — Philippines/Solarized Clean Water Supply: $1,914
+- p2 — Philippines/Project Cacao: $2,420
+- p3 — Philippines/FAITH Springs - Community Water Infrastructure: $2,000
+- p4 — Sri Lanka/Clean Milk Production: $1,960
+- p5 — Sri Lanka/Improve Dairy Cow Nutrition: $900
+- p6 — South Sudan/Water for Dignity: $2,000
+- p7 — South Sudan/Goat Community Initiative: $1,500
+- p8 — Guatemala/Nutritional Supplements Addressing Child Malnutrition: $2,000
 
 ## Donations
 
