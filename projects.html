@@ -375,7 +375,7 @@
         document.querySelector(".goal-title strong").textContent =
           "Overall goal: $" + totalGoal.toLocaleString("en-US");
         document.querySelector(".goal-bar-labels span:last-child").textContent =
-          "Goal: $" + totalGoal.toLocaleString("en-US)";
+          "Goal: $" + totalGoal.toLocaleString("en-US");
         document.querySelectorAll(".project-card[data-project-key]").forEach(function (card) {
           var key = card.getAttribute("data-project-key");
           var goal = Number(card.getAttribute("data-goal"));
@@ -392,8 +392,6 @@
         document.getElementById("goal-progress-text").textContent = "Raised: not posted yet";
       });
   </script>
-
-t>
 
 </body>
 </html>
