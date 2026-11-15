@@ -96,10 +96,10 @@
     .overall-goal-title { font-family: Lora, Georgia, serif; color: #333333; font-size: 24px; }
     .overall-progress { margin-bottom: 24px; }
     .progress-outer { position: relative; background: #e8e8e8; height: 18px; margin: 14px 0 7px; border-radius: 999px; overflow: visible; }
-    .progress-inner { position: relative; z-index: 1; background: #2e7d32; height: 18px; width: 0; border-radius: 999px; }
+    .progress-inner { position: relative; z-index: 1; background: #2e7d32; height: 18px; width: 0; border-radius: 999px 0 0 999px; }
+    .progress-inner.is-near-end { border-radius: 999px; }
     .progress-marker { position: absolute; z-index: 2; top: -5px; left: 0; width: 3px; height: 28px; background: #333333; border-radius: 2px; transform: translateX(-50%); }
     .overall-track { border-radius: 999px; height: 18px; }
-    .overall-track .progress-inner { border-radius: 999px; }
     .bar-labels { display: flex; justify-content: space-between; align-items: center; gap: 12px; color: #555555; font-size: 14px; }
     .bar-labels span:last-child { text-align: right; font-weight: 600; }
     .meter-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 6px 16px; }
@@ -107,7 +107,8 @@
     .project-meter { padding: 2px 0; }
     .project-meter h3 { color: #333333; font-family: "Source Sans 3", Arial, sans-serif; font-size: 19px; font-weight: 700; line-height: 1.25; margin: 0; }
     .project-meter .progress-outer { height: 11px; margin: 8px 0 6px; border-radius: 999px; overflow: visible; }
-    .project-meter .progress-inner { height: 11px; border-radius: 999px; }
+    .project-meter .progress-inner { height: 11px; border-radius: 999px 0 0 999px; }
+    .project-meter .progress-inner.is-near-end { border-radius: 999px; }
     .project-meter .progress-marker { top: -4px; height: 19px; width: 2px; }
     .project-meter .bar-labels { font-size: 12px; }
     .progress-footer { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-top: 22px; }
@@ -345,6 +346,7 @@
         var amount = typeof raised === "number" && isFinite(raised) ? Math.max(0, raised) : null;
         var percent = amount === null || !goal ? 0 : Math.min(100, amount / goal * 100);
         bar.style.width = percent + "%";
+        bar.classList.toggle("is-near-end", percent >= 99);
         marker.style.left = percent + "%";
         return amount === null ? "Raised: not posted yet" : "Raised: " + money(amount);
       }
