@@ -38,7 +38,7 @@
     }
     a { color: #2e7d32; }
 
-    .page { max-width: 800px; margin: 0 auto; padding: 0 16px; }
+    .page { max-width: 960px; margin: 0 auto; padding: 0 20px; }
 
     /* Header */
     .header { border-bottom: 1px solid #dddddd; padding: 10px 0; }
@@ -87,21 +87,27 @@
     .event-description { max-width: 700px; font-size: 19px; margin: 18px 0 10px; }
     .hero-actions { margin: 14px 0 8px; }
     /* Simple fundraising bars */
-    .wide-progress { width: calc(100% + 32px); margin-left: -16px; padding: 28px 20px; }
+    .wide-progress { width: calc(100% + 40px); margin-left: -20px; padding: 32px 26px; }
     .progress-box { background: #ffffff; border: 0; padding: 0; }
-    .progress-outer { background: #e5e5e5; height: 14px; margin: 8px 0 16px; border-radius: 10px; overflow: hidden; }
-    .progress-inner { background: #2e7d32; height: 14px; width: 0; border-radius: 10px; }
-    .overall-progress { margin-bottom: 20px; }
+    .fundraising-title { font-size: 32px; margin: 0 0 22px; }
+    .overall-goal-title { font-family: Lora, Georgia, serif; color: #333333; font-size: 24px; }
+    .overall-progress { margin-bottom: 24px; }
+    .progress-outer { position: relative; background: #e8e8e8; height: 18px; margin: 14px 0 7px; border-radius: 999px; overflow: visible; }
+    .progress-inner { position: relative; z-index: 1; background: #2e7d32; height: 18px; width: 0; border-radius: 999px; }
+    .progress-marker { position: absolute; z-index: 2; top: -5px; left: 0; width: 3px; height: 28px; background: #333333; border-radius: 2px; transform: translateX(-50%); }
+    .overall-track { border-radius: 999px; height: 18px; }
+    .overall-track .progress-inner { border-radius: 999px; }
+    .bar-labels { display: flex; justify-content: space-between; align-items: center; gap: 12px; color: #555555; font-size: 14px; }
+    .bar-labels span:last-child { text-align: right; font-weight: 600; }
     .meter-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 6px 16px; }
-    .meter-head h2 { font-size: 22px; margin: 0; }
-    .meter-head span { color: #666666; font-size: 14px; }
-    .project-progress-list { display: grid; grid-template-columns: 1fr 1fr; gap: 9px 28px; }
+    .project-progress-list { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 34px; }
     .project-meter { padding: 2px 0; }
-    .project-meter h3 { color: #333333; font-family: "Source Sans 3", Arial, sans-serif; font-size: 16px; font-weight: 600; line-height: 1.25; margin: 0; }
-    .project-meter .progress-outer { height: 9px; margin: 5px 0 4px; background: #ededed; }
-    .project-meter .progress-inner { height: 9px; }
-    .project-meter p { margin: 0; color: #777777; font-size: 13px; }
-    .progress-footer { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-top: 18px; }
+    .project-meter h3 { color: #333333; font-family: "Source Sans 3", Arial, sans-serif; font-size: 19px; font-weight: 700; line-height: 1.25; margin: 0; }
+    .project-meter .progress-outer { height: 11px; margin: 8px 0 6px; border-radius: 999px; overflow: visible; }
+    .project-meter .progress-inner { height: 11px; border-radius: 999px; }
+    .project-meter .progress-marker { top: -4px; height: 19px; width: 2px; }
+    .project-meter .bar-labels { font-size: 12px; }
+    .progress-footer { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-top: 22px; }
     .progress-caption { color: #777777; font-size: 14px; margin: 0; }
     .progress-footer .button { margin: 0; }
     .roundup-box { background: #f4f4f4; border: 1px solid #dddddd; padding: 20px; border-radius: 6px; }
@@ -109,8 +115,10 @@
     .roundup-actions .button { margin: 0; }
     .button.secondary { background: #ffffff; border: 1px solid #2e7d32; color: #2e7d32; }
     @media (max-width: 600px) {
-      .project-progress-list { grid-template-columns: 1fr; gap: 7px; }
-      .wide-progress { width: calc(100% + 32px); padding: 25px 16px; }
+      .project-progress-list { grid-template-columns: 1fr; gap: 12px; }
+      .wide-progress { width: calc(100% + 40px); padding: 26px 18px; }
+      .fundraising-title { font-size: 28px; }
+      .overall-goal-title { font-size: 21px; }
     }
 
     /* Photo carousel */
@@ -167,10 +175,11 @@
         <a class="small-link" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=PEER+Teens+USA+Turkey+Trot&dates=20261128T090000/20261128T110000&ctz=America/New_York&location=High+Rock+Mill+Cafe,+Arlington,+MA&details=5K+race,+fun+run,+or+walk+for+global+food+and+water+security.+https://turkeytrot.peerteens.workers.dev/" target="_blank">Add to calendar</a></p>
       <p><b>Where:</b> High Rock Mill Cafe, Arlington, MA
         <a class="small-link" href="https://www.google.com/maps/search/?api=1&query=High+Rock+Mill+Cafe+Arlington+MA" target="_blank">Get directions</a></p>
+      <p><b>Events:</b> 5K, 2.5K, and kids race</p>
 
     </div>
     <div id="event-description" class="event-description">
-      <p>Come join us for a 5K, fun run, or walk! We'll meet at High Rock Mill Cafe on Saturday, November 28, from 9 to 11 AM. We're also working with local stores to provide refreshments for everyone.</p>
+      <p>Come join us for a 5K, a 2.5K, or the kids race! We'll meet at High Rock Mill Cafe on Saturday, November 28, from 9 to 11 AM. Walkers are welcome too.</p>
     </div>
     <div id="register" class="hero-actions">
       <a class="button donate-link" href="projects.html">Donate</a>
@@ -181,12 +190,17 @@
     <!-- ===================== FUNDRAISING PROGRESS ===================== -->
     <section id="progress" class="wide-progress">
       <div class="progress-box">
+        <h2 class="fundraising-title">Fundraising goals</h2>
         <div class="overall-progress">
-          <div class="meter-head">
-            <h2>Fundraising goal: $14,694</h2>
-            <span id="overall-progress-text" aria-live="polite">Updated each day</span>
+          <div class="meter-head"><strong class="overall-goal-title">Overall goal: $14,694</strong></div>
+          <div class="progress-outer overall-track" role="progressbar" aria-label="Overall fundraising progress" aria-valuemin="0" aria-valuemax="14694" aria-valuenow="0">
+            <div class="progress-inner" id="overall-bar"></div>
+            <span class="progress-marker" id="overall-marker" aria-hidden="true"></span>
           </div>
-          <div class="progress-outer" role="progressbar" aria-label="Overall fundraising progress" aria-valuemin="0" aria-valuemax="14694" aria-valuenow="0"><div class="progress-inner" id="overall-bar"></div></div>
+          <div class="bar-labels">
+            <span id="overall-progress-text" aria-live="polite">Raised: not posted yet</span>
+            <span>Goal: $14,694</span>
+          </div>
         </div>
         <div class="project-progress-list" id="project-progress-list" aria-live="polite"></div>
         <div class="progress-footer">
@@ -196,7 +210,7 @@
       </div>
     </section>
 
-    <!-- ===================== ROUNDUP ===================== -->
+        <!-- ===================== ROUNDUP ===================== -->
     <section id="roundup">
       <div class="roundup-box">
         <h2>Round up your purchases for PEER Servants</h2>
@@ -324,11 +338,12 @@
       function money(value) {
         return "$" + Number(value).toLocaleString("en-US");
       }
-      function fillBar(bar, raised, goal) {
-        var amount = (typeof raised === "number" && isFinite(raised)) ? Math.max(0, raised) : null;
+      function setMeter(bar, marker, raised, goal) {
+        var amount = typeof raised === "number" && isFinite(raised) ? Math.max(0, raised) : null;
         var percent = amount === null || !goal ? 0 : Math.min(100, amount / goal * 100);
         bar.style.width = percent + "%";
-        return amount === null ? "Goal: " + money(goal) : money(amount) + " raised of " + money(goal);
+        marker.style.left = percent + "%";
+        return amount === null ? "Raised: not posted yet" : "Raised: " + money(amount);
       }
       fetch("progress.json", { cache: "no-store" })
         .then(function (response) {
@@ -338,10 +353,12 @@
         .then(function (data) {
           var overall = data.overall || {};
           var overallBar = document.getElementById("overall-bar");
-          var overallMeter = overallBar.parentElement;
+          var overallMarker = document.getElementById("overall-marker");
+          var overallGoal = overall.goal || 14694;
           document.getElementById("overall-progress-text").textContent =
-            fillBar(overallBar, overall.raised, overall.goal || 14694);
-          overallMeter.setAttribute("aria-valuenow", String(typeof overall.raised === "number" ? Math.min(overall.goal || 14694, overall.raised) : 0));
+            setMeter(overallBar, overallMarker, overall.raised, overallGoal);
+          overallBar.parentElement.setAttribute("aria-valuenow",
+            String(typeof overall.raised === "number" ? Math.min(overallGoal, overall.raised) : 0));
 
           var container = document.getElementById("project-progress-list");
           Object.keys(names).forEach(function (key) {
@@ -349,7 +366,6 @@
             var goal = item.goal || 0;
             var row = document.createElement("div");
             row.className = "project-meter";
-
             var title = document.createElement("h3");
             title.textContent = names[key];
             row.appendChild(title);
@@ -361,18 +377,31 @@
             outer.setAttribute("aria-valuemin", "0");
             outer.setAttribute("aria-valuemax", String(goal));
             outer.setAttribute("aria-valuenow", "0");
-
             var inner = document.createElement("div");
             inner.className = "progress-inner";
+            var marker = document.createElement("span");
+            marker.className = "progress-marker";
+            marker.setAttribute("aria-hidden", "true");
             outer.appendChild(inner);
+            outer.appendChild(marker);
             row.appendChild(outer);
 
-            outer.setAttribute("aria-valuenow", String(typeof item.raised === "number" ? Math.min(goal, item.raised) : 0));
+            var labels = document.createElement("div");
+            labels.className = "bar-labels";
+            var raisedLabel = document.createElement("span");
+            raisedLabel.textContent = setMeter(inner, marker, item.raised, goal);
+            var goalLabel = document.createElement("span");
+            goalLabel.textContent = "Goal: " + money(goal);
+            labels.appendChild(raisedLabel);
+            labels.appendChild(goalLabel);
+            outer.setAttribute("aria-valuenow",
+              String(typeof item.raised === "number" ? Math.min(goal, item.raised) : 0));
+            row.appendChild(labels);
             container.appendChild(row);
           });
         })
         .catch(function () {
-          document.getElementById("overall-progress-text").textContent = "Daily totals will be posted here.";
+          document.getElementById("overall-progress-text").textContent = "Raised: not posted yet";
         });
     })();
   </script>
