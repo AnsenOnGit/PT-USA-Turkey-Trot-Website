@@ -325,6 +325,7 @@
 
 
   <!-- Reads manually updated daily fundraising totals from progress.json. -->
+  <script src="progress-data.js"></script>
   <script>
     (function () {
       var names = {
@@ -347,7 +348,7 @@
         marker.style.left = percent + "%";
         return amount === null ? "Raised: not posted yet" : "Raised: " + money(amount);
       }
-      fetch("progress.json", { cache: "no-store" })
+      window.loadTurkeyTrotProgress()
         .then(function (response) {
           if (!response.ok) throw new Error("Could not load progress.json");
           return response.json();
