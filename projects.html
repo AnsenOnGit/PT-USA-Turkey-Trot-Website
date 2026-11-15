@@ -44,7 +44,8 @@
     .goal-bar-labels span:last-child { font-weight: 700; text-align: right; }
     section { padding: 28px 0; border-top: 1px solid #dddddd; }
     .instructions { background: #f4f4f4; border: 1px solid #dddddd; border-radius: 6px; padding: 22px; }
-    .project-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 18px; }
+    .project-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 18px; align-items: start; }
+    .project-column { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
     .project-card { border: 1px solid #dddddd; border-radius: 8px; background: #ffffff; overflow: hidden; }
     .project-card-content { padding: 17px 20px 12px; }
     .card-topline { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 8px; }
@@ -132,8 +133,9 @@
 
         <section id="projects">
       <h2>Choose a project</h2>
-      <div class="project-grid">
-        <article class="project-card" id="project-1" data-project-key="p1" data-goal="1914">
+      <div class="project-grid" id="project-grid">
+        <div class="project-column" id="project-column-left">
+<article class="project-card" id="project-1" data-project-key="p1" data-goal="1914">
           <div class="project-card-content">
             <div class="card-topline"><span class="country">Philippines</span><span class="project-no">Project 1</span></div>
             <h3 class="project-card-title">Solarized Clean Water Supply</h3>
@@ -155,29 +157,7 @@
             </div>
         </article>
 
-        <article class="project-card" id="project-2" data-project-key="p2" data-goal="2420">
-          <div class="project-card-content">
-            <div class="card-topline"><span class="country">Philippines</span><span class="project-no">Project 2</span></div>
-            <h3 class="project-card-title">Project Cacao</h3>
-            <div class="project-description-wrap is-collapsed" id="project-description-2">
-              <p class="project-description">CCT needs 20 grants of $121 each to provide shared cacao processing equipment for at least 20 indigenous Blaan and Tagakaolo farmers in the Philippines. By enabling farmers to process their cacao into higher-value products, this project will help create new income opportunities, increase the value of their harvests, and strengthen sustainable livelihoods within their communities.</p>
-            </div>
-            <button class="project-toggle" type="button" aria-expanded="false" aria-controls="project-description-2">More details</button>
-            <div class="project-meta" hidden><strong>Goal: $2,420</strong><span>20 grants of $121</span></div>
-          </div>
-          <div class="project-progress">
-              <div class="project-progress-track" role="progressbar" aria-label="Project 2 fundraising progress" aria-valuemin="0" aria-valuemax="2420" aria-valuenow="0">
-                <div class="project-progress-fill"></div>
-                <span class="project-progress-marker" aria-hidden="true"></span>
-              </div>
-              <div class="project-progress-labels">
-                <span class="raised-label">Raised: not posted yet</span>
-                <span>Goal: $2,420</span>
-              </div>
-            </div>
-        </article>
-
-        <article class="project-card" id="project-3" data-project-key="p3" data-goal="2000">
+<article class="project-card" id="project-3" data-project-key="p3" data-goal="2000">
           <div class="project-card-content">
             <div class="card-topline"><span class="country">Philippines</span><span class="project-no">Project 3</span></div>
             <h3 class="project-card-title">FAITH Springs - Community Water Infrastructure</h3>
@@ -199,29 +179,7 @@
             </div>
         </article>
 
-        <article class="project-card" id="project-4" data-project-key="p4" data-goal="1960">
-          <div class="project-card-content">
-            <div class="card-topline"><span class="country">Sri Lanka</span><span class="project-no">Project 4</span></div>
-            <h3 class="project-card-title">Clean Milk Production</h3>
-            <div class="project-description-wrap is-collapsed" id="project-description-4">
-              <p class="project-description">YGro needs 56 grants of $35 each to equip 56 low-income dairy farmers with stainless steel milk cans and training in clean milk production. These essential tools will help reduce contamination, improve milk quality, and strengthen farmers' opportunities to sell their milk to reliable buyers, providing more stable income for their families.</p>
-            </div>
-            <button class="project-toggle" type="button" aria-expanded="false" aria-controls="project-description-4">More details</button>
-            <div class="project-meta" hidden><strong>Goal: $1,960</strong><span>56 grants of $35</span></div>
-          </div>
-          <div class="project-progress">
-              <div class="project-progress-track" role="progressbar" aria-label="Project 4 fundraising progress" aria-valuemin="0" aria-valuemax="1960" aria-valuenow="0">
-                <div class="project-progress-fill"></div>
-                <span class="project-progress-marker" aria-hidden="true"></span>
-              </div>
-              <div class="project-progress-labels">
-                <span class="raised-label">Raised: not posted yet</span>
-                <span>Goal: $1,960</span>
-              </div>
-            </div>
-        </article>
-
-        <article class="project-card" id="project-5" data-project-key="p5" data-goal="900">
+<article class="project-card" id="project-5" data-project-key="p5" data-goal="900">
           <div class="project-card-content">
             <div class="card-topline"><span class="country">Sri Lanka</span><span class="project-no">Project 5</span></div>
             <h3 class="project-card-title">Improve Dairy Cow Nutrition</h3>
@@ -243,7 +201,74 @@
             </div>
         </article>
 
-        <article class="project-card" id="project-6" data-project-key="p6" data-goal="2000">
+<article class="project-card" id="project-7" data-project-key="p7" data-goal="1500">
+          <div class="project-card-content">
+            <div class="card-topline"><span class="country">South Sudan</span><span class="project-no">Project 7</span></div>
+            <h3 class="project-card-title">Goat Community Initiative</h3>
+            <div class="project-description-wrap is-collapsed" id="project-description-7">
+              <p class="project-description">SALT Yei needs 15 grants of $100 each to help 15 vulnerable farmers in Morobo rebuild their livelihoods through goat rearing. Each grant will contribute to providing livestock and essential veterinary support, giving families an opportunity to improve household nutrition, generate income, and regain economic stability after years of conflict.</p>
+            </div>
+            <button class="project-toggle" type="button" aria-expanded="false" aria-controls="project-description-7">More details</button>
+            <div class="project-meta" hidden><strong>Goal: $1,500</strong><span>15 grants of $100</span></div>
+          </div>
+          <div class="project-progress">
+              <div class="project-progress-track" role="progressbar" aria-label="Project 7 fundraising progress" aria-valuemin="0" aria-valuemax="1500" aria-valuenow="0">
+                <div class="project-progress-fill"></div>
+                <span class="project-progress-marker" aria-hidden="true"></span>
+              </div>
+              <div class="project-progress-labels">
+                <span class="raised-label">Raised: not posted yet</span>
+                <span>Goal: $1,500</span>
+              </div>
+            </div>
+        </article>
+        </div>
+        <div class="project-column" id="project-column-right">
+<article class="project-card" id="project-2" data-project-key="p2" data-goal="2420">
+          <div class="project-card-content">
+            <div class="card-topline"><span class="country">Philippines</span><span class="project-no">Project 2</span></div>
+            <h3 class="project-card-title">Project Cacao</h3>
+            <div class="project-description-wrap is-collapsed" id="project-description-2">
+              <p class="project-description">CCT needs 20 grants of $121 each to provide shared cacao processing equipment for at least 20 indigenous Blaan and Tagakaolo farmers in the Philippines. By enabling farmers to process their cacao into higher-value products, this project will help create new income opportunities, increase the value of their harvests, and strengthen sustainable livelihoods within their communities.</p>
+            </div>
+            <button class="project-toggle" type="button" aria-expanded="false" aria-controls="project-description-2">More details</button>
+            <div class="project-meta" hidden><strong>Goal: $2,420</strong><span>20 grants of $121</span></div>
+          </div>
+          <div class="project-progress">
+              <div class="project-progress-track" role="progressbar" aria-label="Project 2 fundraising progress" aria-valuemin="0" aria-valuemax="2420" aria-valuenow="0">
+                <div class="project-progress-fill"></div>
+                <span class="project-progress-marker" aria-hidden="true"></span>
+              </div>
+              <div class="project-progress-labels">
+                <span class="raised-label">Raised: not posted yet</span>
+                <span>Goal: $2,420</span>
+              </div>
+            </div>
+        </article>
+
+<article class="project-card" id="project-4" data-project-key="p4" data-goal="1960">
+          <div class="project-card-content">
+            <div class="card-topline"><span class="country">Sri Lanka</span><span class="project-no">Project 4</span></div>
+            <h3 class="project-card-title">Clean Milk Production</h3>
+            <div class="project-description-wrap is-collapsed" id="project-description-4">
+              <p class="project-description">YGro needs 56 grants of $35 each to equip 56 low-income dairy farmers with stainless steel milk cans and training in clean milk production. These essential tools will help reduce contamination, improve milk quality, and strengthen farmers' opportunities to sell their milk to reliable buyers, providing more stable income for their families.</p>
+            </div>
+            <button class="project-toggle" type="button" aria-expanded="false" aria-controls="project-description-4">More details</button>
+            <div class="project-meta" hidden><strong>Goal: $1,960</strong><span>56 grants of $35</span></div>
+          </div>
+          <div class="project-progress">
+              <div class="project-progress-track" role="progressbar" aria-label="Project 4 fundraising progress" aria-valuemin="0" aria-valuemax="1960" aria-valuenow="0">
+                <div class="project-progress-fill"></div>
+                <span class="project-progress-marker" aria-hidden="true"></span>
+              </div>
+              <div class="project-progress-labels">
+                <span class="raised-label">Raised: not posted yet</span>
+                <span>Goal: $1,960</span>
+              </div>
+            </div>
+        </article>
+
+<article class="project-card" id="project-6" data-project-key="p6" data-goal="2000">
           <div class="project-card-content">
             <div class="card-topline"><span class="country">South Sudan</span><span class="project-no">Project 6</span></div>
             <h3 class="project-card-title">Water for Dignity</h3>
@@ -265,29 +290,7 @@
             </div>
         </article>
 
-        <article class="project-card" id="project-7" data-project-key="p7" data-goal="1500">
-          <div class="project-card-content">
-            <div class="card-topline"><span class="country">South Sudan</span><span class="project-no">Project 7</span></div>
-            <h3 class="project-card-title">Goat Community Initiative</h3>
-            <div class="project-description-wrap is-collapsed" id="project-description-7">
-              <p class="project-description">SALT Yei needs 15 grants of $100 each to help 15 vulnerable farmers in Morobo rebuild their livelihoods through goat rearing. Each grant will contribute to providing livestock and essential veterinary support, giving families an opportunity to improve household nutrition, generate income, and regain economic stability after years of conflict.</p>
-            </div>
-            <button class="project-toggle" type="button" aria-expanded="false" aria-controls="project-description-7">More details</button>
-            <div class="project-meta" hidden><strong>Goal: $1,500</strong><span>15 grants of $100</span></div>
-          </div>
-          <div class="project-progress">
-              <div class="project-progress-track" role="progressbar" aria-label="Project 7 fundraising progress" aria-valuemin="0" aria-valuemax="1500" aria-valuenow="0">
-                <div class="project-progress-fill"></div>
-                <span class="project-progress-marker" aria-hidden="true"></span>
-              </div>
-              <div class="project-progress-labels">
-                <span class="raised-label">Raised: not posted yet</span>
-                <span>Goal: $1,500</span>
-              </div>
-            </div>
-        </article>
-
-        <article class="project-card" id="project-8" data-project-key="p8" data-goal="2000">
+<article class="project-card" id="project-8" data-project-key="p8" data-goal="2000">
           <div class="project-card-content">
             <div class="card-topline"><span class="country">Guatemala</span><span class="project-no">Project 8</span></div>
             <h3 class="project-card-title">Nutritional Supplements Addressing Child Malnutrition</h3>
@@ -308,6 +311,8 @@
               </div>
             </div>
         </article>
+        </div>
+      </div>
       </div>
     </section>
 
@@ -345,7 +350,40 @@
       <span>PEER Teens USA , Turkey Trot 2026</span>
     </div>
   </footer>
+  <script src="progress-data.js"></script>
   <script>
+    // Use independent vertical stacks on desktop so one card only moves
+    // cards beneath it in its own column. On mobile, restore project order.
+    (function () {
+      var grid = document.getElementById("project-grid");
+      var leftColumn = document.getElementById("project-column-left");
+      var rightColumn = document.getElementById("project-column-right");
+      if (!grid || !leftColumn || !rightColumn) return;
+
+      var cards = Array.prototype.slice.call(grid.querySelectorAll(".project-card"));
+      cards.sort(function (a, b) {
+        return Number(a.id.replace("project-", "")) - Number(b.id.replace("project-", ""));
+      });
+      var narrowLayout = window.matchMedia("(max-width: 720px)");
+
+      function arrangeColumns() {
+        cards.forEach(function (card, index) {
+          if (narrowLayout.matches) {
+            leftColumn.appendChild(card);
+          } else {
+            (index % 2 === 0 ? leftColumn : rightColumn).appendChild(card);
+          }
+        });
+      }
+
+      arrangeColumns();
+      if (narrowLayout.addEventListener) {
+        narrowLayout.addEventListener("change", arrangeColumns);
+      } else if (narrowLayout.addListener) {
+        narrowLayout.addListener(arrangeColumns);
+      }
+    })();
+
     // Expand the same paragraph in place so the text continues seamlessly.
     document.querySelectorAll(".project-toggle[aria-controls]").forEach(function (toggle) {
       var description = document.getElementById(toggle.getAttribute("aria-controls"));
@@ -375,7 +413,7 @@
       track.setAttribute("aria-valuenow", String(amount === null ? 0 : Math.min(goal, amount)));
       return amount === null ? "Raised: not posted yet" : "Raised: $" + amount.toLocaleString("en-US");
     }
-    fetch("progress.json", { cache: "no-store" })
+    window.loadTurkeyTrotProgress()
       .then(function (response) {
         if (!response.ok) throw new Error("Could not load fundraising progress");
         return response.json();
