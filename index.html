@@ -349,10 +349,6 @@
         return amount === null ? "Raised: not posted yet" : "Raised: " + money(amount);
       }
       window.loadTurkeyTrotProgress()
-        .then(function (response) {
-          if (!response.ok) throw new Error("Could not load progress.json");
-          return response.json();
-        })
         .then(function (data) {
           var overall = data.overall || {};
           var overallBar = document.getElementById("overall-bar");
