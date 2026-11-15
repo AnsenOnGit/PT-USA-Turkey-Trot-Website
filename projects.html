@@ -413,10 +413,6 @@
       return amount === null ? "Raised: not posted yet" : "Raised: $" + amount.toLocaleString("en-US");
     }
     window.loadTurkeyTrotProgress()
-      .then(function (response) {
-        if (!response.ok) throw new Error("Could not load fundraising progress");
-        return response.json();
-      })
       .then(function (data) {
         var overall = data.overall || {};
         var totalGoal = overall.goal || 14694;
