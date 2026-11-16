@@ -1,8 +1,8 @@
 /* Shared fundraising-progress loader for the Turkey Trot website.
-   To connect Google Sheets manually:
-   1) Publish a totals-only Google Sheets tab as CSV.
-   2) Paste that published CSV URL between the quotation marks below.
-   Leave it blank to use progress.json instead.
+   The published Google Sheets tab can be read as CSV. The parser accepts:
+   - key,raised,goal rows; or
+   - the current wide layout: one amounts row and one Project 1 ... All Projects row.
+   If Google Sheets is unavailable, the site falls back to progress.json.
 */
 (function () {
   var PROGRESS_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSqSnLqYXg1VsARmIiGOmBK7hnTwQFErhNvLkC4miBgNL16BBH-oFE4piVLOz3Cgi431nXe9-ux3yP2/pub?gid=1535210&single=true&output=csv";
@@ -65,7 +65,18 @@
       if (allowBlank) return null;
       throw new Error("Missing " + label + " in the published progress sheet.");
     }
-    var number = Numbe  function makeProgress(raisedByKey, goalsByKey) {
+    var number = Number(cleaned);
+    if (!isFinite(number) || number < 0) {
+      throw new Error("Invalid " + label + " in the published progress sheet.");
+    }
+    return number;
+  }
+
+  function makeProgress(raisedByKey, goalsByKey) {
+    if (!Object.prototype.hasOwnProperty.call(raisedByKey, "overall")) {
+      throw new Error("The published progress sheet is missing the overall total.");
+    }
+
     var result = {
       updated: new Date().toISOString(),
       overall: {
@@ -95,6 +106,7 @@
       return "p" + project[1];
     }
     if (/^(all\s+projects?|overall|total)$/.test(value)) return "overall";
+    if (/^p[1-8]$/.test(value)) return value;
     return null;
   }
 
@@ -102,7 +114,7 @@
     var rows = parseCsvRows(csvText);
     if (rows.length < 2) throw new Error("The published progress CSV is empty.");
 
-    // Format A: key, raised, goal (the recommended totals-only table).
+    // Format A: key, raised, goal (the normalized totals-only table).
     var headers = rows[0].map(function (cell) { return String(cell).trim().toLowerCase(); });
     var keyColumn = headers.indexOf("key");
     var raisedColumn = headers.indexOf("raised");
@@ -112,22 +124,17 @@
       var keyedRaised = {};
       var keyedGoals = {};
       rows.slice(1).forEach(function (cells) {
-        var key = String(cells[keyColumn] || "").trim().toLowerCase();
+        var key = keyFromProjectLabel(cells[keyColumn]);
         if (!key) return;
         keyedRaised[key] = parseAmount(cells[raisedColumn], key + " raised amount", true);
         keyedGoals[key] = goalColumn >= 0
           ? parseAmount(cells[goalColumn], key + " goal", true)
           : DEFAULT_GOALS[key];
       });
-      if (!Object.prototype.hasOwnProperty.call(keyedRaised, "overall")) {
-        throw new Error("The published progress CSV is missing the overall row.");
-      }
       return makeProgress(keyedRaised, keyedGoals);
     }
 
-    // Format B: the published project-summary layout with one row of amounts
-    // and another row labelled Project 1 ... Project 8, All Projects.
-    // The label row may appear immediately before or after the amount row.
+    // Format B: two horizontal rows, with amounts adjacent to project labels.
     var labelRowIndex = -1;
     var labelColumns = {};
     for (var r = 0; r < rows.length; r++) {
@@ -136,8 +143,7 @@
         var key = keyFromProjectLabel(cell);
         if (key) found[key] = column;
       });
-      if (Object.keys(found).length >= 9 &&
-          Object.keys(found).indexOf("overall") >= 0) {
+      if (Object.keys(found).length >= 9 && found.overall !== undefined) {
         labelRowIndex = r;
         labelColumns = found;
         break;
@@ -153,6 +159,7 @@
         if (candidateIndex < 0 || candidateIndex >= rows.length) return;
         var candidate = rows[candidateIndex];
         var numericCount = 0;
+
         Object.keys(labelColumns).forEach(function (key) {
           var cell = candidate[labelColumns[key]];
           if (String(cell == null ? "" : cell).trim() === "") return;
@@ -160,9 +167,10 @@
             parseAmount(cell, key + " raised amount", false);
             numericCount++;
           } catch (error) {
-            // Ignore rows that are not the amount row.
+            // This neighboring row is not the amount row.
           }
         });
+
         if (numericCount > bestNumericCount) {
           bestNumericCount = numericCount;
           bestRow = candidate;
@@ -182,54 +190,45 @@
       return makeProgress(raisedByLabel, goalsByLabel);
     }
 
-    // Format C: one project per row, with the name in column A and the
-    // raised amount in column B (for example, Project 1,$150).
+    // Format C: one project per row, with name/key in column A and amount in B.
     var verticalRaised = {};
     var verticalGoals = {};
     rows.forEach(function (cells) {
       var key = keyFromProjectLabel(cells[0]);
-      if (!key) {
-        var rawKey = String(cells[0] || "").trim().toLowerCase();
-        if (rawKey === "p1" || rawKey === "p2" || rawKey === "p3" ||
-            rawKey === "p4" || rawKey === "p5" || rawKey === "p6" ||
-            rawKey === "p7" || rawKey === "p8") key = rawKey;
-        if (rawKey === "key") return;
-      }
       if (key && cells.length > 1) {
         verticalRaised[key] = parseAmount(cells[1], key + " raised amount", true);
         verticalGoals[key] = DEFAULT_GOALS[key];
       }
     });
 
-    if (Object.prototype.hasOwnProperty.call(verticalRaised, "overall")) {
+    if (Object.keys(verticalRaised).length) {
       return makeProgress(verticalRaised, verticalGoals);
     }
 
-    throw new Error("Unrecognized published progress sheet layout. Expected key/raised columns or Project 1–8 and All Projects labels.");
-  }
- + key + " row.");
-      result.projects[key] = {
-        raised: item.raised,
-        goal: item.goal || DEFAULT_GOALS[key]
-      };
-    });
-
-    return result;
+    throw new Error("Unrecognized published progress sheet layout.");
   }
 
-  window.loadTurkeyTrotProgress = function () {
-    if (PROGRESS_CSV_URL.trim()) {
-      return fetch(PROGRESS_CSV_URL, { cache: "no-store" })
-        .then(function (response) {
-          if (!response.ok) throw new Error("Could not load the published Google Sheets CSV.");
-          return response.text();
-        })
-        .then(progressFromCsv);
-    }
-
-    return fetch("progress.json", { cache: "no-store" }).then(function (response) {
+  function loadJsonFallback() {
+    return fetch("progress.json?ts=" + Date.now(), { cache: "no-store" }).then(function (response) {
       if (!response.ok) throw new Error("Could not load progress.json.");
       return response.json();
     });
+  }
+
+  window.loadTurkeyTrotProgress = function () {
+    if (!PROGRESS_CSV_URL.trim()) return loadJsonFallback();
+
+    return fetch(PROGRESS_CSV_URL, { cache: "no-store" })
+      .then(function (response) {
+        if (!response.ok) throw new Error("Could not load the published Google Sheets CSV.");
+        return response.text();
+      })
+      .then(progressFromCsv)
+      .catch(function (error) {
+        if (window.console && window.console.warn) {
+          window.console.warn("Google Sheets progress feed unavailable; using progress.json.", error);
+        }
+        return loadJsonFallback();
+      });
   };
 })();
