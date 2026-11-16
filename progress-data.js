@@ -90,11 +90,11 @@
 
   function keyFromProjectLabel(label) {
     var value = String(label || "").trim().toLowerCase();
-    var project = value.match(/^project\\s*(\\d+)$/);
+    var project = value.match(/^project\s*(\d+)$/);
     if (project && Number(project[1]) >= 1 && Number(project[1]) <= 8) {
       return "p" + project[1];
     }
-    if (/^(all\\s+projects?|overall|total)$/.test(value)) return "overall";
+    if (/^(all\s+projects?|overall|total)$/.test(value)) return "overall";
     return null;
   }
 
