@@ -15,56 +15,27 @@ The repository is connected to the live site, so commits to the deployed branch 
 | `progress.json` | Fundraising totals used by the overall and eight project progress bars |
 | `images/peer-teens-usa-logo.jpg` | PEER Teens USA logo |
 
-## Connect the progress bars to Google Sheets
+## Google Sheets progress connection
 
-Both the homepage and Projects page use the shared loader in `progress-data.js`. To connect it to Google Sheets without a Google connector, publish a small totals-only tab as CSV.
+Both the homepage and Projects page use the shared loader in `progress-data.js`. The published tab URL supplied for the Turkey Trot has been configured there as a CSV feed.
 
-### 1. Make a totals-only tab
+The embed URL ends in `/pubhtml?...&gid=1535210...`. The loader uses the matching CSV endpoint instead:
 
-In the team's fundraising spreadsheet, add a new tab named `Website Totals`. Put these exact headers in row 1:
-
-```csv
-key,raised,goal
-overall,,14694
-p1,,1914
-p2,,2420
-p3,,2000
-p4,,1960
-p5,,900
-p6,,2000
-p7,,1500
-p8,,2000
+```text
+https://docs.google.com/spreadsheets/d/e/2PACX-1vSqSnLqYXg1VsARmIiGOmBK7hnTwQFErhNvLkC4miBgNL16BBH-oFE4piVLOz3Cgi431nXe9-ux3yP2/pub?gid=1535210&single=true&output=csv
 ```
 
-Fill the `raised` column with the current aggregate amounts for the overall campaign and each project. You can type the totals or use formulas that reference the shaded total cells in the private tracking tab. Leave a raised cell blank until there is a real posted amount; do not enter zero just to fill it in. Keep the `key` values exactly as shown.
+The parser accepts the published two-row layout where one row contains the amounts and the adjacent row contains `Project 1` through `Project 8` and `All Projects`. It also accepts a normalized `key,raised,goal` table. Project goals come from the website's configured goals.
 
-### 2. Publish only that tab as CSV
+### Important privacy note
 
-In Google Sheets, open **File → Share → Publish to web**. Select only the `Website Totals` sheet tab, choose **Comma-separated values (.csv)** as the format, and click **Publish**. Keep **Automatically republish when changes are made** enabled. Copy the published CSV URL.
+Publish only a tab containing aggregate project totals. Do not publish the full donor-tracking tab if it contains donor names, email addresses, or other private information. In Google Sheets, use **File → Share → Publish to web**, select only the totals tab, choose **Comma-separated values (.csv)**, and enable automatic republishing. Google explains how to publish a specific sheet and manage publishing here: https://support.google.com/docs/answer/183965?hl=en
 
-Do not publish the full donor-tracking tab if it contains names, email addresses, or other private donor information. Publish only the totals-only tab. Google Sheets lets you publish an individual sheet, and its help page warns against publishing sensitive information: https://support.google.com/docs/answer/183965?hl=en
+### Updating or changing the feed
 
-### 3. Add the published URL to the website
+The CSV URL is already set in `progress-data.js`; you do not need to paste it again. If the published tab or URL changes, edit the `PROGRESS_CSV_URL` value in that file and commit the change. After editing the spreadsheet, allow Google a little time to republish, then refresh the website.
 
-In this GitHub repository, open `progress-data.js`, click the pencil (Edit) button, and find:
-
-```js
-var PROGRESS_CSV_URL = "";
-```
-
-Paste your published CSV URL between the quotation marks, for example:
-
-```js
-var PROGRESS_CSV_URL = "PASTE_THE_PUBLISHED_CSV_URL_HERE";
-```
-
-Do not change the other code. Click **Commit changes**. Both website pages use this same file, so you only need to add the URL once.
-
-### 4. Check that it works
-
-Open the published CSV URL in a private/incognito browser window. It should show the CSV data with the `key`, `raised`, and `goal` columns and all nine rows. Then open the website and refresh the homepage and Projects page. The overall and project bars should use the sheet totals. When the sheet is edited later, the published tab updates automatically (it can take a few minutes), and a page refresh reloads the latest values.
-
-If the CSV URL is blank, the site continues to use `progress.json` as a fallback. If you want to undo the public feed later, unpublish the tab in Google Sheets and clear the URL in `progress-data.js`.
+The loader falls back to `progress.json` if the published CSV cannot be loaded or parsed. This keeps the last manually saved totals visible rather than showing an empty progress state.
 
 ## Fallback progress.json file
 
